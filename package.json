@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint:script": "eslint --ext .js,.jsx,.vue,.ts,.tsx --fix --quiet ./",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -13,8 +14,13 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.1",
+    "@typescript-eslint/parser": "^6.4.1",
     "@vitejs/plugin-vue": "^4.3.3",
+    "eslint": "^8.47.0",
+    "eslint-plugin-vue": "^9.17.0",
     "husky": "^8.0.3",
+    "prettier": "^3.0.2",
     "sass": "^1.66.1",
     "typescript": "^5.1.6",
     "vite": "^4.4.9",
