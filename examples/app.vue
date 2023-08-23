@@ -1,29 +1,45 @@
 <template>
-  <div class="test-container">
-    <fs-create-select v-model="value" :options="options" />
+  <div class="test-container" v-loading="loading">
+    <FsWaterFall
+      v-model:loading="loading"
+      :gap="20"
+      :column="6"
+      :request="requestData"
+      :page-size="20"
+    >
+      <template #item="{ item }">
+        <img :src="item.url" alt="图片" class="image" />
+      </template>
+    </FsWaterFall>
   </div>
 </template>
 
 <script setup lang="ts">
-import { FsCreateSelect } from '@fanosy/components';
 import { ref } from 'vue';
+import {
+  FsWaterFall,
+  type IImageItem,
+  type IWaterfallRequest
+} from '@fanosy/components';
 
-const value = ref('');
+const loading = ref(false);
 
-const options = [
-  {
-    label: 'test1',
-    value: '1'
-  },
-  {
-    label: 'test2',
-    value: '2'
-  },
-  {
-    label: 'test3',
-    value: '3'
-  }
-];
+const requestData: IWaterfallRequest = (page, pageSize) => {
+  return new Promise<IImageItem[]>((resolve) => {
+    fetch(
+      `https://blogback.fasyncsy.com.cn/vilipix/ranking?${pageSize}=30&page=${page}`
+    ).then(async (res) => {
+      const result = await res.json();
+      const imageList: IImageItem[] = result.data.rows.map((i: any) => ({
+        id: i.picture_id,
+        url: i.original_url,
+        height: i.height,
+        width: i.width
+      }));
+      resolve(imageList);
+    });
+  });
+};
 </script>
 
 <style scoped lang="scss">
@@ -34,5 +50,11 @@ const options = [
   border: 1px solid red;
   box-sizing: border-box;
   padding: 10px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>

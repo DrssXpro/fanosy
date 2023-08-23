@@ -26,7 +26,7 @@ import 'element-plus/es/components/input/style/css';
 import './style/index.scss';
 import { nanoid } from 'nanoid';
 import { ref } from 'vue';
-import { ISelectOptions } from './type';
+import { ISelectOptions } from './types';
 
 const props = defineProps<{
   options: ISelectOptions[];
