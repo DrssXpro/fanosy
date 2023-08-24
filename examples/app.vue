@@ -1,51 +1,22 @@
 <template>
-  <div class="test-container" v-loading="loading">
-    <FsEstimatedVirtualList
-      :data-source="dataSource"
-      :estimated-height="60"
-      @getMoreData="addData"
-      v-model:loading="loading"
-    >
-      <template #item="{ item }">
-        <div class="list-item">{{ item.id }} - {{ item.content }}</div>
-      </template>
-    </FsEstimatedVirtualList>
+  <div class="test-container">
+    <fs-tree-transfer
+      :data-source="TreeData"
+      :title="['全部类目', '已选类目']"
+      placeholder="请输入，支持模糊查询"
+      divider="/"
+      @select-value="handleSelect"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import Mock from 'mockjs';
-import { FsEstimatedVirtualList } from '@fanosy/components';
+import { TreeData } from './treeData';
+import { FsTreeTransfer, type ICheckItem } from '@fanosy/components';
 
-const dataSource = ref<
-  Array<{
-    id: number;
-    content: string;
-  }>
->([]);
-
-const loading = ref(false);
-
-const addData = () => {
-  loading.value = true;
-  setTimeout(() => {
-    const newData = [];
-    for (let i = 0; i < 20; i++) {
-      const len: number = dataSource.value.length + newData.length;
-      newData.push({
-        id: len,
-        content: Mock.mock('@csentence(40, 100)') // 内容
-      });
-    }
-    dataSource.value = [...dataSource.value, ...newData];
-    loading.value = false;
-  }, 2000);
+const handleSelect = (items: ICheckItem[]) => {
+  console.log('选项:', items);
 };
-
-onMounted(() => {
-  addData();
-});
 </script>
 
 <style scoped lang="scss">

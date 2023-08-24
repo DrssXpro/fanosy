@@ -1,0 +1,56 @@
+.fs-tree-transfer {
+  overflow: auto;
+  &_search {
+    width: 40%;
+    min-width: 280px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  &_content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    .content-opeartor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .content-list {
+      min-width: 200px;
+      width: 200px;
+      height: 300px;
+      overflow: auto;
+      border: 1px solid #eee;
+      .list-title {
+        box-sizing: border-box;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 20px;
+        border-bottom: 1px solid #eee;
+        background-color: #f7fbff;
+        font-size: 18px;
+        color: #666666;
+      }
+      .list-content {
+        padding: 10px;
+        .check-item {
+          padding-left: 5px;
+          display: flex;
+          flex-direction: column;
+          &:hover {
+            background-color: #f5f7fa;
+          }
+          .check_label {
+            width: 150px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+      }
+    }
+  }
+}
