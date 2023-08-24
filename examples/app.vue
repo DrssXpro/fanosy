@@ -1,47 +1,51 @@
 <template>
-  <div class="test-container" v-loading="state.loading">
-    <fs-virtual-list
-      :data-source="state.dataSource"
-      :item-height="100"
-      @getMoreData="handleGetMoreData"
+  <div class="test-container" v-loading="loading">
+    <FsEstimatedVirtualList
+      :data-source="dataSource"
+      :estimated-height="60"
+      @getMoreData="addData"
+      v-model:loading="loading"
     >
       <template #item="{ item }">
-        <div class="list-item">{{ item.id }}</div>
+        <div class="list-item">{{ item.id }} - {{ item.content }}</div>
       </template>
-    </fs-virtual-list>
+    </FsEstimatedVirtualList>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, onMounted } from 'vue';
-import { FsVirtualList } from '@fanosy/components';
+import { ref, onMounted } from 'vue';
+import Mock from 'mockjs';
+import { FsEstimatedVirtualList } from '@fanosy/components';
 
-const state = reactive({
-  dataSource: [] as Array<{ id: number }>,
-  loading: false
-});
+const dataSource = ref<
+  Array<{
+    id: number;
+    content: string;
+  }>
+>([]);
+
+const loading = ref(false);
+
+const addData = () => {
+  loading.value = true;
+  setTimeout(() => {
+    const newData = [];
+    for (let i = 0; i < 20; i++) {
+      const len: number = dataSource.value.length + newData.length;
+      newData.push({
+        id: len,
+        content: Mock.mock('@csentence(40, 100)') // 内容
+      });
+    }
+    dataSource.value = [...dataSource.value, ...newData];
+    loading.value = false;
+  }, 2000);
+};
 
 onMounted(() => {
   addData();
 });
-
-const handleGetMoreData = () => {
-  addData();
-};
-
-const addData = () => {
-  if (state.loading) return;
-  state.loading = true;
-  setTimeout(() => {
-    for (let i = 0; i < 10; i++) {
-      const len = state.dataSource.length;
-      state.dataSource.push({
-        id: len + 1
-      });
-    }
-    state.loading = false;
-  }, 2000);
-};
 </script>
 
 <style scoped lang="scss">
@@ -56,11 +60,10 @@ const addData = () => {
 
 .list-item {
   width: 100%;
-  height: 100px;
   box-sizing: border-box;
   border: 1px solid #000;
   text-align: center;
-  line-height: 100px;
-  font-size: 20px;
+  font-size: 18px;
+  letter-spacing: 0.1em;
 }
 </style>
