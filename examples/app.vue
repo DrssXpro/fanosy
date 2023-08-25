@@ -1,12 +1,11 @@
 <template>
   <div class="test-container">
     <FsBounceCountTo
-      v-for="(i, index) in [1, 2, 3, 4]"
-      :key="index"
-      :delay="index + 1"
-      :num="i"
+      :num="1236"
       :font-size="32"
       color="red"
+      :delay="2"
+      :rock-speed="500"
     />
   </div>
 </template>
@@ -23,7 +22,6 @@ import { FsBounceCountTo } from '@fanosy/components';
   border: 1px solid red;
   box-sizing: border-box;
   padding: 10px;
-  display: flex;
 }
 
 .list-item {

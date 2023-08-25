@@ -1,3 +1,8 @@
+.fs-bounce-count-to {
+  display: flex;
+  align-items: center;
+}
+
 .fs-bounce-countTo-list {
   animation:
     move var(--speed) linear infinite,
