@@ -1,0 +1,45 @@
+.fs-bounce-countTo-list {
+  animation:
+    move var(--speed) linear infinite,
+    bounce 1s var(--delay) forwards;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@keyframes move {
+  from {
+    transform: translateY(-90%);
+  }
+
+  to {
+    transform: translateY(1%);
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(calc(var(--num) * -9% - 5%));
+  }
+
+  25% {
+    transform: translateY(calc(var(--num) * -9% + 4%));
+  }
+
+  50% {
+    transform: translateY(calc(var(--num) * -9% - 3%));
+  }
+
+  70% {
+    transform: translateY(calc(var(--num) * -9% + 2%));
+  }
+
+  85% {
+    transform: translateY(calc(var(--num) * -9% - 1%));
+  }
+
+  to {
+    // 最终落点尽量于正常数字平齐
+    transform: translateY(calc(var(--num) * -9.1%));
+  }
+}

@@ -1,22 +1,18 @@
 <template>
   <div class="test-container">
-    <fs-tree-transfer
-      :data-source="TreeData"
-      :title="['全部类目', '已选类目']"
-      placeholder="请输入，支持模糊查询"
-      divider="/"
-      @select-value="handleSelect"
+    <FsBounceCountTo
+      v-for="(i, index) in [1, 2, 3, 4]"
+      :key="index"
+      :delay="index + 1"
+      :num="i"
+      :font-size="32"
+      color="red"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { TreeData } from './treeData';
-import { FsTreeTransfer, type ICheckItem } from '@fanosy/components';
-
-const handleSelect = (items: ICheckItem[]) => {
-  console.log('选项:', items);
-};
+import { FsBounceCountTo } from '@fanosy/components';
 </script>
 
 <style scoped lang="scss">
@@ -27,6 +23,7 @@ const handleSelect = (items: ICheckItem[]) => {
   border: 1px solid red;
   box-sizing: border-box;
   padding: 10px;
+  display: flex;
 }
 
 .list-item {
