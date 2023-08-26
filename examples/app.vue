@@ -1,17 +1,22 @@
 <template>
-  <div class="test-container">
+  <div class="test-container" v-loading="loading">
     <fs-category-selector
+      v-model:loading="loading"
       :request="requestData"
+      :is-last="true"
       @select-category="getSelectResult"
     />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { FsCategorySelector, type ICategoryItem } from '@fanosy/components';
 import { templateData1, templateData2, templateData3 } from './categoryData';
 
 const dataSource = [templateData1, templateData2, templateData3];
+
+const loading = ref(false);
 
 const requestData = async (level: number, id: string | number) => {
   const res = await getCategoryData(level, id);

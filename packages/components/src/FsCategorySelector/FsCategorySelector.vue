@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="fs-category-container"
-    v-loading="showLoading"
-    element-loading-text="加载中..."
-  >
+  <div class="fs-category-container">
     <div
       class="fs-category-item"
       v-for="(i, index) in categoryData"
@@ -45,13 +41,14 @@ const props = withDefaults(
   defineProps<{
     currentColor?: string;
     currentBg?: string;
-    isLoading?: boolean;
+    isLast?: boolean;
+    loading: boolean;
     request: IRequestFunction;
   }>(),
   {
     currentColor: '#005FCD',
     currentBg: '#E6EFFA',
-    isLoading: true
+    isLast: false
   }
 );
 
@@ -59,19 +56,19 @@ const emit = defineEmits<{
   selectCategory: [
     result: Array<Pick<ICategoryItem, 'id' | 'level' | 'content'>>
   ];
+  'update:loading': [boolean];
 }>();
 
 const categoryData = ref<ICategoryGroup[]>([]);
-const showLoading = ref(false);
 
 onMounted(async () => {
-  showLoading.value = props.isLoading;
+  emit('update:loading', true);
   const res = await props.request(1, 0);
   categoryData.value[0] = {
     data: res.data,
     currentIndex: -1
   };
-  showLoading.value = false;
+  emit('update:loading', false);
 });
 
 /**
@@ -84,7 +81,7 @@ const handleGetCurrentCategory = async (item: ICategoryItem, index: number) => {
   // 提前操作：删除所点击层级分类的的后续分类数据
   categoryData.value.splice(item.level, categoryData.value.length - item.level);
   if (item.isMore !== false && !item.children.length) {
-    showLoading.value = props.isLoading;
+    emit('update:loading', true);
     const res = await props.request(item.level + 1, item.id);
     // 成功获取下一级分类数据
     if (res.success) {
@@ -97,7 +94,7 @@ const handleGetCurrentCategory = async (item: ICategoryItem, index: number) => {
         item.isMore = false;
       }
     }
-    showLoading.value = false;
+    emit('update:loading', false);
   }
   // 通过标志判断存在孩子节点，直接使用孩子节点数据
   if (item.isMore !== false) {
@@ -108,7 +105,8 @@ const handleGetCurrentCategory = async (item: ICategoryItem, index: number) => {
   }
   // 判断已经没有分类数据，则发送选择结果
   if (item.isMore === false) {
-    emit('selectCategory', handleGetSelect());
+    const result = handleGetSelect();
+    emit('selectCategory', props.isLast ? [result[result.length - 1]] : result);
   }
 };
 
