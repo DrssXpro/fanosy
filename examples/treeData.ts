@@ -1,6 +1,4 @@
-import { ITreeItem } from './type';
-
-const TreeData: ITreeItem[] = [
+const TreeData = [
   {
     id: 1,
     label: '1-节点1',
