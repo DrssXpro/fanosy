@@ -1,0 +1,133 @@
+@mixin message-box-border-element {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  transition: all 0.3s;
+  box-shadow: 0 0 8px #00000028;
+}
+.fs-message-box {
+  &__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+  }
+
+  &__content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -260px;
+    margin-top: -110px;
+    width: 520px;
+    height: 220px;
+    z-index: 1000;
+    .message-box-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      padding: 20px;
+      box-sizing: border-box;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      z-index: 1001;
+      .message-box-title {
+        font-weight: 700;
+        font-size: 18px;
+      }
+      .message-box-content {
+        font-size: 16px;
+      }
+      .message-box-icon {
+        position: absolute;
+        right: 15px;
+        top: 5px;
+        font-size: 30px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 0.3s;
+        &:hover {
+          transform: rotateZ(180deg) scale(1.1);
+        }
+      }
+      .operator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .btn {
+          width: 90px;
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 15px;
+          cursor: pointer;
+          transition: all 0.3s;
+
+          border: 1px solid transparent;
+          font-size: 14px;
+        }
+        .confirm {
+          background-color: #000;
+          color: #fff;
+          margin-right: 20px;
+        }
+        .cancel {
+          color: #f00;
+          &:hover {
+            border: 1px solid red;
+          }
+        }
+      }
+
+      &::after {
+        @include message-box-border-element;
+        transform: rotateZ(-4deg);
+        background-color: #fff;
+        z-index: -1;
+      }
+      &::before {
+        @include message-box-border-element;
+        border: 2px solid #fff;
+        transform: rotateZ(0deg);
+        z-index: -2;
+      }
+      &:hover::after {
+        transform: rotateZ(0);
+      }
+      &:hover::before {
+        transform: rotate(-8deg);
+      }
+    }
+  }
+}
+.mask-enter-from,
+.mask-leave-to {
+  opacity: 0;
+}
+.mask-enter-active,
+.mask-leave-active {
+  transition: opacity 0.3s;
+}
+.mask-enter-to,
+.mask-leave-from {
+  opacity: 1;
+}
+
+.box-enter-from,
+.box-leave-to {
+  transform: rotateX(-90deg);
+  opacity: 0;
+}
+.box-enter-active,
+.box-leave-active {
+  transition: all 0.3s;
+}

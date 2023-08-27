@@ -1,61 +1,24 @@
 <template>
   <div class="test-container">
-    <fs-search-container>
-      <template #search>
-        <fs-search-item label="文章搜索1">
-          <el-input v-model="value" clearable placeholder="请输入内容" />
-        </fs-search-item>
-        <fs-search-item label="文章搜索2">
-          <el-input v-model="value" clearable />
-        </fs-search-item>
-        <fs-search-item label="文章搜索3">
-          <el-input v-model="value" clearable />
-        </fs-search-item>
-        <fs-search-item label="文章搜索4">
-          <el-input v-model="value" clearable />
-        </fs-search-item>
-        <fs-search-item label="文章搜索5">
-          <el-select v-model="value" placeholder="请选择内容" clearable>
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
-          </el-select>
-        </fs-search-item>
-      </template>
-    </fs-search-container>
+    <el-button @click="handleShow" type="primary">change</el-button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { FsSearchContainer, FsSearchItem } from '@fanosy/components';
-const value = ref('');
+import { FsMessageBox } from '@fanosy/components';
 
-const options = [
-  {
-    value: 'Option1',
-    label: 'Option1'
-  },
-  {
-    value: 'Option2',
-    label: 'Option2'
-  },
-  {
-    value: 'Option3',
-    label: 'Option3'
-  },
-  {
-    value: 'Option4',
-    label: 'Option4'
-  },
-  {
-    value: 'Option5',
-    label: 'Option5'
-  }
-];
+const handleShow = () => {
+  FsMessageBox({
+    title: '测试',
+    content: '这是一个测试框'
+  })
+    .then(() => {
+      console.log('确认');
+    })
+    .catch(() => {
+      console.log('取消');
+    });
+};
 </script>
 
 <style scoped lang="scss">
