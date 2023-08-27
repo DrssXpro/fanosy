@@ -1,0 +1,31 @@
+.fs-form-container {
+  padding: 15px;
+  min-width: 650px;
+  box-sizing: border-box;
+  height: auto;
+  overflow: hidden;
+}
+.fs-form-search {
+  display: flex;
+  .search-container {
+    flex: 1;
+  }
+  .search-group {
+    display: flex;
+    height: 70px;
+    align-items: center;
+    gap: 10px;
+    .expand-button {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      color: var(--el-color-primary);
+    }
+    .action-button {
+      font-size: 12px;
+      width: 60px;
+      height: 28px;
+    }
+  }
+}

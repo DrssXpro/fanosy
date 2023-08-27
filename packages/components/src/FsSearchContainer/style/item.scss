@@ -1,0 +1,16 @@
+.fs-search-item {
+  display: inline-block;
+  vertical-align: text-top;
+  margin-bottom: 18px;
+  margin-right: 20px;
+
+  &_label {
+    line-height: 20px;
+    margin-bottom: 4px;
+    overflow: hidden;
+  }
+  &_content {
+    height: 28px;
+  }
+}
+

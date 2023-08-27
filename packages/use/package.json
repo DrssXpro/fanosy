@@ -1,5 +1,5 @@
 {
-  "name": "@fanosy/components",
+  "name": "@fanosy/use",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,10 +8,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@fanosy/use": "workspace:^",
-    "@fanosy/utils": "workspace:^",
-    "nanoid": "^4.0.2"
-  }
+  "license": "ISC"
 }

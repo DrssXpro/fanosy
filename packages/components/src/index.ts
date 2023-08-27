@@ -7,3 +7,4 @@ export * from './FsTreeTransfer';
 export * from './FsBounceCountTo';
 export * from './FsCategorySelector';
 export * from './FsSelectArea';
+export * from './FsSearchContainer';
