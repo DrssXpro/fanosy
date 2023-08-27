@@ -9,3 +9,4 @@ export * from './FsCategorySelector';
 export * from './FsSelectArea';
 export * from './FsSearchContainer';
 export * from './FsMessageBox';
+export * from './FsTable';

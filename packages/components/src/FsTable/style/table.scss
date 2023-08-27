@@ -1,0 +1,17 @@
+.fs-table {
+  &-container {
+    width: 100%;
+    height: 100%;
+  }
+  &-content {
+    width: 100%;
+    height: calc(100% - 70px);
+  }
+  &-pagination {
+    height: 50px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
