@@ -33,7 +33,13 @@ const emit = defineEmits<{
 
 const selectValue = ref('');
 
+const clearSelect = () => (selectValue.value = '');
+
 const handleSelectChange = (value: string) => {
   emit('selectChange', value);
 };
+
+defineExpose({
+  clearSelect
+});
 </script>

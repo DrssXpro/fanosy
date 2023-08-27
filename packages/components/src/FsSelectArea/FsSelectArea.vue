@@ -8,6 +8,7 @@
       :size="$attrs.size"
     ></fs-selector>
     <fs-selector
+      ref="cityRef"
       title="请选择 - 市"
       :options="cityList"
       @select-change="selectCity"
@@ -16,6 +17,7 @@
       :disabled="disabledCity"
     ></fs-selector>
     <fs-selector
+      ref="countyRef"
       title="请选择 - 区县"
       :options="countyList"
       @select-change="selectCounty"
@@ -48,6 +50,9 @@ const props = withDefaults(
 const emit = defineEmits<{
   chooseArea: [value: Array<Array<string>>];
 }>();
+
+const cityRef = ref<InstanceType<typeof FsSelector>>();
+const countyRef = ref<InstanceType<typeof FsSelector>>();
 const provinceList = ref<Record<string, IProvince>>(formatData(cityData));
 const cityList = ref<Record<string, ICity>>({});
 const countyList = ref<Record<string, ICounty>>({});
@@ -59,6 +64,8 @@ const result = ref<Array<string[]>>([]);
 const selectProvince = (value: string) => {
   // [110000, 北京市]
   if (value) {
+    clearCity();
+    clearCounty();
     const arr = value.split('-') as any[];
     cityList.value = provinceList.value[arr[1]].cities as Record<string, ICity>;
     result.value[0] = arr;
@@ -68,6 +75,7 @@ const selectProvince = (value: string) => {
 // 选择市
 const selectCity = (value: string) => {
   if (value) {
+    clearCounty();
     const arr = value.split('-') as any;
     countyList.value = cityList.value[arr[1]].counties as Record<
       string,
@@ -95,12 +103,14 @@ const clearProvince = () => {
 
 // 清空市：只保存省结果，county 选项都需清空
 const clearCity = () => {
+  cityRef.value!.clearSelect();
   result.value = [result.value[0]];
   countyList.value = {};
 };
 
 // 清空区/县：保存省、市结果
 const clearCounty = () => {
+  countyRef.value!.clearSelect();
   result.value.pop();
 };
 
