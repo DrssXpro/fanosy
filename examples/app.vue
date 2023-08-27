@@ -1,49 +1,19 @@
 <template>
-  <div class="test-container" v-loading="loading">
-    <fs-category-selector
-      v-model:loading="loading"
-      :request="requestData"
-      :is-last="true"
-      @select-category="getSelectResult"
+  <div class="test-container">
+    <fs-select-area
+      @choose-area="handleArea"
+      direction="vertical"
+      size="small"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { FsCategorySelector, type ICategoryItem } from '@fanosy/components';
-import { templateData1, templateData2, templateData3 } from './categoryData';
+import { FsSelectArea } from '@fanosy/components';
 
-const dataSource = [templateData1, templateData2, templateData3];
-
-const loading = ref(false);
-
-const requestData = async (level: number, id: string | number) => {
-  const res = await getCategoryData(level, id);
-  return {
-    data: res,
-    success: true
-  };
+const handleArea = (area: string[][]) => {
+  console.log('checkchoose:', area);
 };
-
-const getSelectResult = (
-  result: Array<Pick<ICategoryItem, 'id' | 'content' | 'level'>>
-) => {
-  console.log('拿到选择结果：', result);
-};
-
-function getCategoryData(
-  level: number,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  id: string | number
-): Promise<ICategoryItem[]> {
-  const randomTime = Math.floor(Math.random() + 1);
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(dataSource[level - 1] || []);
-    }, randomTime * 1000);
-  });
-}
 </script>
 
 <style scoped lang="scss">

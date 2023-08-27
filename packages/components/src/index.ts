@@ -6,3 +6,4 @@ export * from './FsEstimatedVirtualList';
 export * from './FsTreeTransfer';
 export * from './FsBounceCountTo';
 export * from './FsCategorySelector';
+export * from './FsSelectArea';
