@@ -24,6 +24,10 @@ import { rafThrottle } from '@fanosy/utils';
 import { IImageItem, IWaterFallProps } from './types';
 import './style/index.scss';
 
+defineOptions({
+  name: 'fs-waterfall'
+});
+
 const props = defineProps<IWaterFallProps>();
 
 defineSlots<{

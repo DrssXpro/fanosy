@@ -28,6 +28,10 @@ import { nanoid } from 'nanoid';
 import { ref } from 'vue';
 import { ISelectOptions } from './types';
 
+defineOptions({
+  name: 'fs-create-select'
+});
+
 const props = defineProps<{
   options: ISelectOptions[];
   modelValue: any;
@@ -36,10 +40,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   'update:modelValue': [value: any];
 }>();
-
-defineOptions({
-  name: 'FsCreateSelect'
-});
 
 const selectContent = ref<string | string[]>(props.modelValue);
 

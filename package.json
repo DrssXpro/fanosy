@@ -25,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
     "@vitejs/plugin-vue": "^4.3.3",
+    "@vue/runtime-core": "^3.3.4",
     "element-plus": "^2.3.9",
     "eslint": "^8.47.0",
     "eslint-config-prettier": "^9.0.0",

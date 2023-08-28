@@ -37,6 +37,10 @@ interface ICategoryGroup {
   currentIndex: number;
 }
 
+defineOptions({
+  name: 'fs-category-selector'
+});
+
 const props = withDefaults(
   defineProps<{
     currentColor?: string;

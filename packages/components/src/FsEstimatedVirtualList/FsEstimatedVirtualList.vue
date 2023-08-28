@@ -19,7 +19,7 @@
   </div>
 </template>
 
-<script setup lang="ts" generic="T extends { id: number }">
+<script setup lang="ts">
 import {
   CSSProperties,
   computed,
@@ -30,11 +30,15 @@ import {
   ref,
   watch
 } from 'vue';
-import { IEstimatedListProps, IPosInfo } from './types';
+import { IEstimatedListProps, IEstimatedListItem, IPosInfo } from './types';
 import { rafThrottle } from '@fanosy/utils';
 import './style/index.scss';
 
-const props = defineProps<IEstimatedListProps<T>>();
+defineOptions({
+  name: 'fs-estimated-virtuallist'
+});
+
+const props = defineProps<IEstimatedListProps>();
 
 const emit = defineEmits<{
   getMoreData: [];
@@ -42,7 +46,7 @@ const emit = defineEmits<{
 }>();
 
 defineSlots<{
-  item(props: { item: T }): any;
+  item(props: { item: IEstimatedListItem }): any;
 }>();
 
 const contentRef = ref<HTMLDivElement>();

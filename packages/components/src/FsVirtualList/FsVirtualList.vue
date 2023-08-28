@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup lang="ts" generic="T">
+<script setup lang="ts">
 import {
   onMounted,
   ref,
@@ -25,18 +25,22 @@ import {
   onUnmounted,
   watch
 } from 'vue';
-import type { IVirtuallistProps } from './types';
+import type { IVirtuallistItem, IVirtuallistProps } from './types';
 import { rafThrottle } from '@fanosy/utils';
 import './style/index.scss';
 
-const props = defineProps<IVirtuallistProps<T & { id: number | string }>>();
+defineOptions({
+  name: 'fs-virtuallist'
+});
+
+const props = defineProps<IVirtuallistProps>();
 
 const emit = defineEmits<{
   getMoreData: [];
 }>();
 
 defineSlots<{
-  item(props: { item: T & { id: number | string } }): any;
+  item(props: { item: IVirtuallistItem }): any;
 }>();
 
 const contentRef = ref<HTMLDivElement>();

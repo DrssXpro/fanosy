@@ -28,7 +28,8 @@ import { Close } from '@element-plus/icons-vue';
 import './style/index.scss';
 
 defineOptions({
-  inheritAttrs: false
+  inheritAttrs: false,
+  name: 'fs-message-box'
 });
 
 const state = reactive({

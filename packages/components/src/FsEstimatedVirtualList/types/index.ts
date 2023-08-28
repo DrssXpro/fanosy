@@ -1,7 +1,12 @@
-export interface IEstimatedListProps<T> {
+export interface IEstimatedListProps {
   loading: boolean;
   estimatedHeight: number;
-  dataSource: T[];
+  dataSource: IEstimatedListItem[];
+}
+
+export interface IEstimatedListItem {
+  id: number;
+  [key: string]: any;
 }
 
 export interface IPosInfo {

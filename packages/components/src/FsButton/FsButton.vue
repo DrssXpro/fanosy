@@ -20,6 +20,10 @@ import {
   throttle as throttleToolFn
 } from '@fanosy/utils';
 
+defineOptions({
+  name: 'fs-button'
+});
+
 const props = withDefaults(
   defineProps<{
     time: number;

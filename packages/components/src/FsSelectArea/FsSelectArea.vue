@@ -36,6 +36,10 @@ import cityData from './cityData/city';
 import type { IAreaList, ICity, ICounty, IProvince } from './types';
 import 'element-plus/es/components/space/style/css';
 
+defineOptions({
+  name: 'fs-selector-area'
+});
+
 const props = withDefaults(
   defineProps<{
     gap?: number;

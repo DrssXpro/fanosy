@@ -80,6 +80,10 @@ import type { ITreeTransferProps, ITreeItem, ICheckItem } from './types';
 import './style/index.scss';
 import { computed } from 'vue';
 
+defineOptions({
+  name: 'fs-tree-transfer'
+});
+
 const props = withDefaults(defineProps<ITreeTransferProps>(), {
   title: () => ['列表1', '列表2'],
   activeColor: '#f00',

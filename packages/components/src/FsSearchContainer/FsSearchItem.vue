@@ -23,6 +23,11 @@
 import { getCurrentInstance, ref } from 'vue';
 import './style/item.scss';
 const instance = getCurrentInstance() as any;
+
+defineOptions({
+  name: 'fs-search-item'
+});
+
 const props = withDefaults(
   defineProps<{
     label?: string;

@@ -36,6 +36,10 @@ import { rafThrottle } from '@fanosy/utils';
 import 'element-plus/es/components/button/style/css';
 import './style/container.scss';
 
+defineOptions({
+  name: 'fs-search-container'
+});
+
 const slots = useSlots();
 const instance = getCurrentInstance() as any;
 const props = withDefaults(

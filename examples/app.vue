@@ -1,14 +1,12 @@
 <template>
-  <fs-button type="primary" :time="1000" @click="handleClick" throttle
+  <fs-button type="danger" :time="1000" throttle @click="handleClick"
     >测试</fs-button
   >
 </template>
 
 <script setup lang="ts">
-import { FsButton } from '@fanosy/components';
-
-const handleClick = (e: any) => {
-  console.log('test', e);
+const handleClick = () => {
+  console.log('test');
 };
 </script>
 

@@ -35,6 +35,10 @@ import {
 import { debounce, rafThrottle } from '@fanosy/utils';
 import './style/index.scss';
 
+defineOptions({
+  name: 'fs-virtual-waterfall'
+});
+
 const props = withDefaults(defineProps<IVirtualWaterFallProps>(), {
   request: async () => ({ list: [], total: 0 }),
   gap: 20,

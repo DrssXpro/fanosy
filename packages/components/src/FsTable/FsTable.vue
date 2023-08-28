@@ -50,6 +50,10 @@ import 'element-plus/es/components/table-column/style/css';
 import 'element-plus/es/components/pagination/style/css';
 import './style/table.scss';
 
+defineOptions({
+  name: 'fs-table'
+});
+
 const props = withDefaults(defineProps<IFsTableProps<T>>(), {
   showPagination: false,
   isSelect: false,

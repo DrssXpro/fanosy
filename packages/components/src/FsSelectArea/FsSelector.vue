@@ -21,6 +21,11 @@ import { ElSelect, ElOption } from 'element-plus';
 import type { IOptions } from './types';
 import 'element-plus/es/components/select/style/css';
 import 'element-plus/es/components/option/style/css';
+
+defineOptions({
+  name: 'fs-selector'
+});
+
 const props = defineProps<{
   title: string;
   options: IOptions;

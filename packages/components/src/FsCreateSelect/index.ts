@@ -1,4 +1,8 @@
-import FsCreateSelect from './FsCreateSelect.vue';
-export { FsCreateSelect };
+import _FsCreateSelect from './FsCreateSelect.vue';
+import { withInstall } from '@fanosy/utils';
+
+const FsCreateSelect = withInstall(_FsCreateSelect);
+
 export * from './types';
+export { FsCreateSelect };
 export default FsCreateSelect;

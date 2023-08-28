@@ -14,6 +14,10 @@ import { ITableScrollbarProps } from './types';
 import { debounce, rafThrottle } from '@fanosy/utils';
 import './style/scrollbar.scss';
 
+defineOptions({
+  name: 'fs-table-scrollbar'
+});
+
 const props = withDefaults(defineProps<ITableScrollbarProps>(), {
   headerSticky: false,
   bottom: 10,

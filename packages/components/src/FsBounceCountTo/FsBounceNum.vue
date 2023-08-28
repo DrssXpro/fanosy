@@ -20,6 +20,10 @@
 import { computed, type CSSProperties } from 'vue';
 import type { IBounceCountToProps } from './types';
 
+defineOptions({
+  name: 'fs-bounce-num'
+});
+
 const props = withDefaults(defineProps<IBounceCountToProps>(), {
   fontSize: 14,
   color: '#000',

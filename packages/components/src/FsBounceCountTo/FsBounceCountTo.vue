@@ -18,6 +18,10 @@ import FsBounceNum from './FsBounceNum.vue';
 import { IBounceCountToProps } from './types';
 import './style/index.scss';
 
+defineOptions({
+  name: 'fs-bounce-count-to'
+});
+
 const props = withDefaults(defineProps<IBounceCountToProps>(), {
   fontSize: 14,
   color: '#000',
