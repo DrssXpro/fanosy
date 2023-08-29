@@ -1,6 +1,7 @@
-.fs-tree-transfer {
-  overflow: auto;
-  &_search {
+@use '../../style/mixins.scss' as *;
+
+@include b(tree-transfer) {
+  @include e(search) {
     width: 40%;
     min-width: 280px;
     height: 60px;
@@ -8,7 +9,7 @@
     align-items: center;
     gap: 10px;
   }
-  &_content {
+  @include e(content) {
     display: flex;
     align-items: center;
     gap: 40px;

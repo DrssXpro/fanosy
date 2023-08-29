@@ -1,6 +1,6 @@
 <template>
   <el-select v-model="selectContent" @change="handleSelect">
-    <div class="fs-add-box">
+    <div :class="ns.e('add-box')">
       <el-input
         v-model="addValue"
         placeholder="输入添加新的选项"
@@ -18,15 +18,16 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { ElButton, ElSelect, ElOption, ElInput } from 'element-plus';
+import { useNameSpace } from '@fanosy/use';
+import { nanoid } from 'nanoid';
+import { ISelectOptions } from './types';
 import 'element-plus/es/components/button/style/css';
 import 'element-plus/es/components/select/style/css';
 import 'element-plus/es/components/option/style/css';
 import 'element-plus/es/components/input/style/css';
 import './style/index.scss';
-import { nanoid } from 'nanoid';
-import { ref } from 'vue';
-import { ISelectOptions } from './types';
 
 defineOptions({
   name: 'fs-create-select'
@@ -40,6 +41,8 @@ const props = defineProps<{
 const emit = defineEmits<{
   'update:modelValue': [value: any];
 }>();
+
+const ns = useNameSpace('create-select');
 
 const selectContent = ref<string | string[]>(props.modelValue);
 

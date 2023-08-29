@@ -1,12 +1,15 @@
-.fs-category {
-  &-container {
+@use '../../style/mixins.scss' as *;
+
+@include b(category-selector) {
+  @include e(container) {
     width: 100%;
     height: 320px;
     overflow: auto;
     display: flex;
     gap: 20px;
   }
-  &-item {
+
+  @include e(item) {
     min-width: 150px;
     width: 150px;
     border: 1px solid #eee;
@@ -47,3 +50,53 @@
     }
   }
 }
+
+// .fs-category {
+//   &-container {
+//     width: 100%;
+//     height: 320px;
+//     overflow: auto;
+//     display: flex;
+//     gap: 20px;
+//   }
+//   &-item {
+//     min-width: 150px;
+//     width: 150px;
+//     border: 1px solid #eee;
+//     color: #666666;
+
+//     .category-title {
+//       height: 40px;
+//       border-bottom: 1px solid #eee;
+//       line-height: 40px;
+//       box-sizing: border-box;
+//       text-align: center;
+//       margin-bottom: 10px;
+//     }
+//     .category-list {
+//       padding: 0;
+//       margin: 0;
+//       list-style: none;
+//       font-size: 12px;
+//       height: 260px;
+//       overflow: auto;
+//       li {
+//         position: relative;
+//         width: 100%;
+//         overflow: hidden;
+//         white-space: nowrap;
+//         text-overflow: ellipsis;
+//         cursor: pointer;
+//         padding: 5px 40px 5px 10px;
+//         box-sizing: border-box;
+//         .icon {
+//           position: absolute;
+//           right: 5px;
+//           top: 7px;
+//           width: 14px;
+//           height: 14px;
+//         }
+//       }
+//     }
+//   }
+// }

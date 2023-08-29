@@ -1,15 +1,13 @@
 <template>
-  <div class="fs-virtuallist-container">
-    <div class="fs-virtuallist-content" ref="contentRef">
-      <div class="fs-virtuallist-list" :style="scrollStyle">
-        <div
-          class="fs-virtuallist-list-item"
-          :style="{ width: '100%', height: `${props.itemHeight}px` }"
-          v-for="i in renderList"
-          :key="i.id"
-        >
-          <slot name="item" :item="i"></slot>
-        </div>
+  <div :class="ns.e('content')" ref="contentRef">
+    <div :class="ns.e('list')" :style="scrollStyle">
+      <div
+        :class="ns.e('list-item')"
+        :style="{ width: '100%', height: `${props.itemHeight}px` }"
+        v-for="i in renderList"
+        :key="i.id"
+      >
+        <slot name="item" :item="i"></slot>
       </div>
     </div>
   </div>
@@ -27,6 +25,7 @@ import {
 } from 'vue';
 import type { IVirtuallistItem, IVirtuallistProps } from './types';
 import { rafThrottle } from '@fanosy/utils';
+import { useNameSpace } from '@fanosy/use';
 import './style/index.scss';
 
 defineOptions({
@@ -42,6 +41,8 @@ const emit = defineEmits<{
 defineSlots<{
   item(props: { item: IVirtuallistItem }): any;
 }>();
+
+const ns = useNameSpace('virtuallist');
 
 const contentRef = ref<HTMLDivElement>();
 

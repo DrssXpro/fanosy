@@ -1,6 +1,6 @@
 <template>
-  <div class="fs-tree-transfer">
-    <div class="fs-tree-transfer_search">
+  <div :class="ns.b()">
+    <div :class="ns.e('search')">
       <el-input
         clearable
         v-model="searchContent"
@@ -9,7 +9,7 @@
       ></el-input>
       <el-button type="primary" @click="handleSearchTree">查询</el-button>
     </div>
-    <div class="fs-tree-transfer_content">
+    <div :class="ns.e('content')">
       <div class="content-list">
         <div class="list-title">{{ props.title[0] }}</div>
         <div class="list-content">
@@ -69,16 +69,16 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, onMounted, ref, watch } from 'vue';
+import { Ref, onMounted, ref, watch, computed } from 'vue';
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue';
 import { ElButton, ElTree, ElCheckbox, ElCheckboxGroup } from 'element-plus';
+import { useNameSpace } from '@fanosy/use';
+import type { ITreeTransferProps, ITreeItem, ICheckItem } from './types';
 import 'element-plus/es/components/button/style/css';
 import 'element-plus/es/components/tree/style/css';
 import 'element-plus/es/components/checkbox/style/css';
 import 'element-plus/es/components/checkbox-group/style/css';
-import type { ITreeTransferProps, ITreeItem, ICheckItem } from './types';
 import './style/index.scss';
-import { computed } from 'vue';
 
 defineOptions({
   name: 'fs-tree-transfer'
@@ -93,6 +93,8 @@ const props = withDefaults(defineProps<ITreeTransferProps>(), {
 const emit = defineEmits<{
   selectValue: [check: ICheckItem[]];
 }>();
+
+const ns = useNameSpace('tree-transfer');
 
 const TreeItemProps = {
   label: 'label',

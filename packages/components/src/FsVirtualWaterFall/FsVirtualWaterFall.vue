@@ -1,9 +1,9 @@
 <template>
-  <div class="fs-virtual-waterfall-container">
-    <div class="fs-virtual-waterfall-content" ref="contentRef">
-      <div class="fs-virtual-waterfall-list" :style="contentStyle">
+  <div :class="ns.e('container')">
+    <div :class="ns.e('content')" ref="contentRef">
+      <div :class="ns.e('list')" :style="contentStyle">
         <div
-          class="fs-virtual-waterfall-item"
+          :class="ns.e('list-item')"
           v-for="{ item, style } in renderList"
           :key="item.id"
           :style="style"
@@ -33,6 +33,7 @@ import {
   IVirtualWaterFallProps
 } from './types';
 import { debounce, rafThrottle } from '@fanosy/utils';
+import { useNameSpace } from '@fanosy/use';
 import './style/index.scss';
 
 defineOptions({
@@ -55,6 +56,8 @@ const emit = defineEmits<{
 defineSlots<{
   item(props: { item: IDataItem }): any;
 }>();
+
+const ns = useNameSpace('virtual-waterfall');
 
 const dataState = reactive({
   loading: false,

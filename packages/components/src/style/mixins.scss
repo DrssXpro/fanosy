@@ -1,0 +1,31 @@
+@use 'config' as *;
+
+@mixin b($block) {
+  $B: $namespace + $common-separator + $block !global;
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: #{'.' + $B + $element-separator + $element};
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: #{$selector + $modifier-separator + $modifier};
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}

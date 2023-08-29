@@ -1,13 +1,9 @@
 <template>
-  <div class="fs-estimated-virtuallist-container">
-    <div class="fs-estimated-virtuallist-content" ref="contentRef">
-      <div
-        class="fs-estimated-virtuallist-list"
-        ref="listRef"
-        :style="scrollStyle"
-      >
+  <div :class="ns.e('container')">
+    <div :class="ns.e('content')" ref="contentRef">
+      <div :class="ns.e('list')" ref="listRef" :style="scrollStyle">
         <div
-          class="fs-estimated-virtuallist-list-item"
+          :class="ns.e('list-item')"
           v-for="i in renderList"
           :key="i.id"
           :id="String(i.id)"
@@ -32,11 +28,14 @@ import {
 } from 'vue';
 import { IEstimatedListProps, IEstimatedListItem, IPosInfo } from './types';
 import { rafThrottle } from '@fanosy/utils';
+import { useNameSpace } from '@fanosy/use';
 import './style/index.scss';
 
 defineOptions({
   name: 'fs-estimated-virtuallist'
 });
+
+const ns = useNameSpace('estimated-virtuallist');
 
 const props = defineProps<IEstimatedListProps>();
 

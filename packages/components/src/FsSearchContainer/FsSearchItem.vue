@@ -1,11 +1,11 @@
 <template>
   <div
-    class="fs-search-item"
+    :class="ns.b()"
     :style="{ width: `${props.itemWidth}px` }"
     v-if="isVisible"
   >
     <div
-      class="fs-search-item_label"
+      :class="ns.e('label')"
       :style="{
         fontSize: `${props.labelSize}px`,
         color: `${props.labelColor}`
@@ -13,7 +13,7 @@
     >
       {{ props.label }}
     </div>
-    <div class="fs-search-item_content">
+    <div :class="ns.e('content=')">
       <slot></slot>
     </div>
   </div>
@@ -21,8 +21,8 @@
 
 <script setup lang="ts">
 import { getCurrentInstance, ref } from 'vue';
+import { useNameSpace } from '@fanosy/use';
 import './style/item.scss';
-const instance = getCurrentInstance() as any;
 
 defineOptions({
   name: 'fs-search-item'
@@ -42,6 +42,10 @@ const props = withDefaults(
     itemWidth: 230
   }
 );
+
+const ns = useNameSpace('search-item');
+
+const instance = getCurrentInstance() as any;
 
 const isVisible = ref(true);
 

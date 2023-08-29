@@ -1,16 +1,26 @@
 <template>
-  <div class="fs-message-box-container">
+  <div>
     <Transition name="mask">
-      <div class="fs-message-box__mask" v-show="state.isShow"></div>
+      <div :class="ns.e('mask')" v-show="state.isShow"></div>
     </Transition>
     <Transition name="box">
-      <div class="fs-message-box__content" v-show="state.isShow">
+      <div :class="ns.e('content')" v-show="state.isShow">
         <div class="message-box-container">
           <div class="message-box-title">{{ state.title }}</div>
           <div class="message-box-content">{{ state.content }}</div>
-          <div class="operator">
-            <div class="confirm btn" @click="onConfirm('confirm')">确定</div>
-            <div class="cancel btn" @click="onConfirm('cancel')">取消</div>
+          <div class="message-box-operator">
+            <div
+              :class="[ns.em('operator', 'confirm'), 'operator-btn']"
+              @click="onConfirm('confirm')"
+            >
+              确定
+            </div>
+            <div
+              :class="[ns.em('operator', 'cancel'), 'operator-btn']"
+              @click="onConfirm('cancel')"
+            >
+              取消
+            </div>
           </div>
           <el-icon class="message-box-icon" @click="onConfirm('cancel')">
             <Close
@@ -23,6 +33,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue';
+import { useNameSpace } from '@fanosy/use';
 import { IMessageBoxProps } from './types';
 import { Close } from '@element-plus/icons-vue';
 import './style/index.scss';
@@ -31,6 +42,8 @@ defineOptions({
   inheritAttrs: false,
   name: 'fs-message-box'
 });
+
+const ns = useNameSpace('message-box');
 
 const state = reactive({
   title: '',

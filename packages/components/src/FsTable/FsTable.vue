@@ -1,6 +1,6 @@
 <template>
-  <div class="fs-table-container">
-    <div class="fs-table-content">
+  <div :class="ns.e('container')">
+    <div :class="ns.e('content')">
       <fs-table-scroll-bar is-fixed headerSticky>
         <el-table :data="data" v-bind="props.tableConfig" ref="ElTableInstance">
           <!-- 配置项渲染列 -->
@@ -25,7 +25,7 @@
         </el-table>
       </fs-table-scroll-bar>
     </div>
-    <div class="fs-table-pagination" v-if="props.showPagination">
+    <div :class="ns.e('pagination')" v-if="props.showPagination">
       <span>共{{ props.pagination!.total }}条</span>
       <el-pagination
         :current-page="props.pagination!.currentPage"
@@ -44,6 +44,7 @@
 import { ref } from 'vue';
 import { ElTable, ElTableColumn, ElPagination } from 'element-plus';
 import FsTableScrollBar from './FsTableScrollBar.vue';
+import { useNameSpace } from '@fanosy/use';
 import { IFsTableProps } from './types';
 import 'element-plus/es/components/table/style/css';
 import 'element-plus/es/components/table-column/style/css';
@@ -68,6 +69,9 @@ defineSlots<{
   bodyCell(props: { row: T; columnKey: string }): any;
   table(): any;
 }>();
+
+const ns = useNameSpace('table');
+
 const ElTableInstance = ref<InstanceType<any>>();
 
 const handleCurrentPageChange = (page: number) => {

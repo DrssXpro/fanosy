@@ -1,6 +1,10 @@
-.fs-add-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
+@use '../../style/mixins.scss' as *;
+
+@include b(create-select) {
+  @include e(add-box) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+  }
 }

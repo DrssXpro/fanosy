@@ -1,23 +1,30 @@
 <template>
-  <div class="fs-form-container" :style="{ backgroundColor: props.bgColor }">
-    <div class="fs-form-search">
+  <div :class="ns.e('container')" :style="{ backgroundColor: props.bgColor }">
+    <div :class="ns.e('search')">
       <div class="search-container" ref="searchContentRef">
         <slot name="search" ref="test"></slot>
       </div>
       <div class="search-group">
-        <div class="expand-button" v-if="isShowFold" @click="handleFold">
+        <div
+          :class="ns.em('search', 'expand-button')"
+          v-if="isShowFold"
+          @click="handleFold"
+        >
           <span>{{ isFold ? '展开' : '收起' }}</span>
           <el-icon>
             <CaretBottom v-if="isFold" />
             <CaretTop v-else />
           </el-icon>
         </div>
-        <el-button type="primary" class="action-button" @click="emit('search')"
+        <el-button
+          type="primary"
+          :class="ns.em('search', 'action-button')"
+          @click="emit('search')"
           >查询</el-button
         >
         <el-button
           type="success"
-          class="action-button"
+          :class="ns.em('search', 'action-button')"
           @click="emit('reset')"
           v-if="props.showReset"
           >重置</el-button
@@ -31,7 +38,7 @@
 import { computed, getCurrentInstance, onMounted, ref, useSlots } from 'vue';
 import { ElButton } from 'element-plus';
 import { CaretTop, CaretBottom } from '@element-plus/icons-vue';
-import { useResizeListener } from '@fanosy/use';
+import { useResizeListener, useNameSpace } from '@fanosy/use';
 import { rafThrottle } from '@fanosy/utils';
 import 'element-plus/es/components/button/style/css';
 import './style/container.scss';
@@ -58,6 +65,8 @@ const emit = defineEmits<{
   search: [];
   reset: [];
 }>();
+
+const ns = useNameSpace('form');
 
 const test = ref<any>();
 const searchContentRef = ref<HTMLDivElement>();

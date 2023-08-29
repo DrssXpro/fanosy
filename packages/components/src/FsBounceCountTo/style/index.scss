@@ -1,15 +1,16 @@
-.fs-bounce-count-to {
+@use '../../style/mixins.scss' as *;
+
+@include b(bounce-count-to) {
   display: flex;
   align-items: center;
-}
-
-.fs-bounce-countTo-list {
-  animation:
-    move var(--speed) linear infinite,
-    bounce 1s var(--delay) forwards;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  @include e(list) {
+    animation:
+      move var(--speed) linear infinite,
+      bounce 1s var(--delay) forwards;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 }
 
 @keyframes move {

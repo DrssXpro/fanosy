@@ -1,9 +1,9 @@
 <template>
-  <div class="fs-waterfall-container">
-    <div class="fs-waterfall-content" ref="contentRef">
-      <div class="fs-waterfall-list">
+  <div :class="ns.e('container')">
+    <div :class="ns.e('content')" ref="contentRef">
+      <div :class="ns.e('list')">
         <div
-          class="fs-waterfall-item"
+          :class="ns.e('list-item')"
           v-for="(item, index) in state.imageList"
           :key="item.id"
           :style="{
@@ -21,6 +21,7 @@
 <script setup lang="ts">
 import { computed, markRaw, onMounted, onUnmounted, reactive, ref } from 'vue';
 import { rafThrottle } from '@fanosy/utils';
+import { useNameSpace } from '@fanosy/use';
 import { IImageItem, IWaterFallProps } from './types';
 import './style/index.scss';
 
@@ -37,6 +38,8 @@ defineSlots<{
 const emit = defineEmits<{
   'update:loading': [boolean];
 }>();
+
+const ns = useNameSpace('waterfall');
 
 const contentRef = ref<HTMLDivElement>();
 

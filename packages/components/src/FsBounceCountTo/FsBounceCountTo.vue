@@ -1,5 +1,5 @@
 <template>
-  <div class="fs-bounce-count-to">
+  <div :class="ns.b()">
     <fs-bounce-num
       v-for="(i, index) in numSplit"
       :key="index"
@@ -15,6 +15,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import FsBounceNum from './FsBounceNum.vue';
+import { useNameSpace } from '@fanosy/use';
 import { IBounceCountToProps } from './types';
 import './style/index.scss';
 
@@ -27,6 +28,8 @@ const props = withDefaults(defineProps<IBounceCountToProps>(), {
   color: '#000',
   rockSpeed: 500
 });
+
+const ns = useNameSpace('bounce-count-to');
 
 const numSplit = computed(() =>
   props.num

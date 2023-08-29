@@ -1,10 +1,6 @@
 <template>
-  <div class="fs-category-container">
-    <div
-      class="fs-category-item"
-      v-for="(i, index) in categoryData"
-      :key="index"
-    >
+  <div :class="ns.e('container')">
+    <div :class="ns.e('item')" v-for="(i, index) in categoryData" :key="index">
       <div class="category-title">{{ LEVEL[index] }}</div>
       <ul class="category-list">
         <li
@@ -25,12 +21,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, type CSSProperties } from 'vue';
 import { ArrowRight } from '@element-plus/icons-vue';
+import { useNameSpace } from '@fanosy/use';
 import type { ICategoryItem, IRequestFunction } from './types';
 import { LEVEL } from './constant';
 import './style/index.scss';
-import { CSSProperties } from 'vue';
 
 interface ICategoryGroup {
   data: ICategoryItem[];
@@ -62,6 +58,8 @@ const emit = defineEmits<{
   ];
   'update:loading': [boolean];
 }>();
+
+const ns = useNameSpace('category-selector');
 
 const categoryData = ref<ICategoryGroup[]>([]);
 

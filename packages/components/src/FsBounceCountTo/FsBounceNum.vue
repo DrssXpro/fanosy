@@ -1,6 +1,6 @@
 <template>
-  <div class="fs-bounce-countTo" :style="computedStyle">
-    <ul ref="ulRef" class="fs-bounce-countTo-list">
+  <div :style="computedStyle">
+    <ul ref="ulRef" :class="ns.e('list')">
       <li>0</li>
       <li>1</li>
       <li>2</li>
@@ -18,7 +18,10 @@
 
 <script setup lang="ts">
 import { computed, type CSSProperties } from 'vue';
+import { useNameSpace } from '@fanosy/use';
 import type { IBounceCountToProps } from './types';
+
+const ns = useNameSpace('bounce-count-to');
 
 defineOptions({
   name: 'fs-bounce-num'

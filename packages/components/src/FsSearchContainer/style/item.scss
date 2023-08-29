@@ -1,16 +1,17 @@
-.fs-search-item {
+@use '../../style/mixins.scss' as *;
+
+@include b(search-item) {
   display: inline-block;
   vertical-align: text-top;
   margin-bottom: 18px;
   margin-right: 20px;
-
-  &_label {
+  @include e(label) {
     line-height: 20px;
     margin-bottom: 4px;
     overflow: hidden;
   }
-  &_content {
+
+  @include e(content) {
     height: 28px;
   }
 }
-

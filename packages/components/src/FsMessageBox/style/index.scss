@@ -1,3 +1,5 @@
+@use '../../style/mixins.scss' as *;
+
 @mixin message-box-border-element {
   content: '';
   display: block;
@@ -8,8 +10,9 @@
   transition: all 0.3s;
   box-shadow: 0 0 8px #00000028;
 }
-.fs-message-box {
-  &__mask {
+
+@include b(message-box) {
+  @include e(mask) {
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +22,18 @@
     z-index: 999;
   }
 
-  &__content {
+  @include e(operator) {
+    @include m(confirm) {
+      background-color: #000;
+      color: #fff;
+      margin-right: 20px;
+    }
+    @include m(cancel) {
+      color: #f00;
+    }
+  }
+
+  @include e(content) {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -46,6 +60,24 @@
       .message-box-content {
         font-size: 16px;
       }
+      .message-box-operator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .operator-btn {
+        width: 90px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        border: 1px solid transparent;
+        font-size: 14px;
+      }
       .message-box-icon {
         position: absolute;
         right: 15px;
@@ -58,36 +90,6 @@
           transform: rotateZ(180deg) scale(1.1);
         }
       }
-      .operator {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .btn {
-          width: 90px;
-          height: 40px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border-radius: 15px;
-          cursor: pointer;
-          transition: all 0.3s;
-
-          border: 1px solid transparent;
-          font-size: 14px;
-        }
-        .confirm {
-          background-color: #000;
-          color: #fff;
-          margin-right: 20px;
-        }
-        .cancel {
-          color: #f00;
-          &:hover {
-            border: 1px solid red;
-          }
-        }
-      }
-
       &::after {
         @include message-box-border-element;
         transform: rotateZ(-4deg);
@@ -109,6 +111,7 @@
     }
   }
 }
+
 .mask-enter-from,
 .mask-leave-to {
   opacity: 0;
