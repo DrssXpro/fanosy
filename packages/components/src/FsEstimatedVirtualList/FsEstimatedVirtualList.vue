@@ -32,7 +32,7 @@ import { useNameSpace } from '@fanosy/use';
 import './style/index.scss';
 
 defineOptions({
-  name: 'fs-estimated-virtuallist'
+  name: 'fs-estimated-virtual-list'
 });
 
 const ns = useNameSpace('estimated-virtuallist');

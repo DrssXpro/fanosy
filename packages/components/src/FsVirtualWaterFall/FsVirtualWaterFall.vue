@@ -37,7 +37,7 @@ import { useNameSpace } from '@fanosy/use';
 import './style/index.scss';
 
 defineOptions({
-  name: 'fs-virtual-waterfall'
+  name: 'fs-virtual-water-fall'
 });
 
 const props = withDefaults(defineProps<IVirtualWaterFallProps>(), {

@@ -26,7 +26,7 @@ import { IImageItem, IWaterFallProps } from './types';
 import './style/index.scss';
 
 defineOptions({
-  name: 'fs-waterfall'
+  name: 'fs-water-fall'
 });
 
 const props = defineProps<IWaterFallProps>();

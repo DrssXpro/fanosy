@@ -29,7 +29,7 @@ import { useNameSpace } from '@fanosy/use';
 import './style/index.scss';
 
 defineOptions({
-  name: 'fs-virtuallist'
+  name: 'fs-virtual-list'
 });
 
 const props = defineProps<IVirtuallistProps>();

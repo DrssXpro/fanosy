@@ -1,46 +1,40 @@
 <template>
   <div class="test-container">
-    <fs-virtual-waterfall
+    <fs-water-fall
       v-model:loading="loading"
-      :request="req"
-      :gap="15"
-      :column="5"
+      :gap="20"
+      :column="6"
+      :request="requestData"
+      :page-size="20"
     >
       <template #item="{ item }">
-        <img class="list-item" :src="item.src" />
+        <el-image :src="item.url" alt="图片" class="image" lazy></el-image>
       </template>
-    </fs-virtual-waterfall>
+    </fs-water-fall>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { FsVirtualWaterfallReuqest } from '@fanosy/components';
+import { IImageItem } from '@fanosy/components';
 
 const loading = ref(false);
 
-const req: FsVirtualWaterfallReuqest = async (tpage, size) => {
-  // 请求，并传入分页参数
-  const rep = await fetch(
-    `https://www.vilipix.com/api/v1/picture/public?limit=${size}&sort=hot&offset=${
-      --tpage * size
-    }`
-  );
-  // 数据处理
-  let {
-    data: { rows, count }
-  } = await rep.json();
-  rows = rows.map((item: any) => ({
-    id: item.picture_id,
-    width: item.width,
-    height: item.height,
-    src: item.regular_url + '?x-oss-process=image/resize,w_240/format,jpg'
-  }));
-
-  return {
-    total: count,
-    list: rows
-  };
+const requestData = (page: number, pageSize: number): Promise<IImageItem[]> => {
+  return new Promise<IImageItem[]>((resolve) => {
+    fetch(
+      `https://blogback.fasyncsy.com.cn/vilipix/ranking?${pageSize}=30&page=${page}`
+    ).then(async (res) => {
+      const result = await res.json();
+      const imageList: IImageItem[] = result.data.rows.map((i: any) => ({
+        id: i.picture_id,
+        url: i.original_url,
+        height: i.height,
+        width: i.width
+      }));
+      resolve(imageList);
+    });
+  });
 };
 </script>
 
@@ -59,6 +53,12 @@ const req: FsVirtualWaterfallReuqest = async (tpage, size) => {
   height: 100%;
   box-sizing: border-box;
   animation: identifier 0.25s; // 添加动画，使其出现时更加丝滑
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @keyframes identifier {
