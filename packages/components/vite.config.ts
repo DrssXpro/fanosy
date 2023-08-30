@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
 import dts from 'vite-plugin-dts';
 export default defineConfig({
@@ -52,10 +53,9 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      entryRoot: './src',
-      outDir: ['../fanosy/es/src', '../fanosy/lib/src'],
-      //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
-      tsconfigPath: '../../tsconfig.json'
+      entryRoot: resolve(__dirname, './index.ts'),
+      copyDtsFiles: true,
+      outDir: ['../fanosy/es/src', '../fanosy/lib/src']
     }),
     {
       name: 'style',

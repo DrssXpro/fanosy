@@ -11,7 +11,7 @@ function init(props: IMessageBoxProps) {
   document.body.appendChild(frag);
 }
 
-function FsMessageBox(props: IMessageBoxProps) {
+function FsMessageBox(props: IMessageBoxProps): Promise<boolean> {
   !instance && init(props);
   return instance.init(props);
 }
