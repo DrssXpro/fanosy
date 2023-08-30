@@ -12,10 +12,5 @@
   "dependencies": {
     "@fanosy/use": "workspace:^",
     "@fanosy/utils": "workspace:^"
-  },
-  "peerDependencies": {
-    "element-plus": "^2.3.9",
-    "@element-plus/icons-vue": "^2.1.0",
-    "nanoid": "^4.0.2"
   }
 }

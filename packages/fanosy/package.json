@@ -25,5 +25,10 @@
   ],
   "author": "DrssX",
   "license": "ISC",
-  "typings": "lib/index.d.ts"
+  "typings": "lib/index.d.ts",
+  "peerDependencies": {
+    "element-plus": "^2.3.9",
+    "@element-plus/icons-vue": "^2.1.0",
+    "nanoid": "^4.0.2"
+  }
 }
