@@ -11,6 +11,7 @@ export default defineConfig({
       //忽略打包vue文件
       external: [
         'vue',
+        /\.scss/,
         'element-plus',
         '@element-plus/icons-vue',
         'nanoid',
@@ -55,6 +56,20 @@ export default defineConfig({
       outDir: ['../fanosy/es/src', '../fanosy/lib/src'],
       //指定使用的tsconfig.json为我们整个项目根目录下,如果不配置,你也可以在components下新建tsconfig.json
       tsconfigPath: '../../tsconfig.json'
-    })
+    }),
+    {
+      name: 'style',
+      generateBundle(_, bundle) {
+        const keys = Object.keys(bundle);
+        for (const key of keys) {
+          const bundler: any = bundle[key as any];
+          this.emitFile({
+            type: 'asset',
+            fileName: key,
+            source: bundler.code.replace(/\.scss/g, '.css')
+          });
+        }
+      }
+    }
   ]
 });
