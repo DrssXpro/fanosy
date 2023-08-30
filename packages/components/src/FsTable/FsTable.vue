@@ -42,13 +42,9 @@
 
 <script setup lang="ts" generic="T">
 import { ref } from 'vue';
-import { ElTable, ElTableColumn, ElPagination } from 'element-plus';
 import FsTableScrollBar from './FsTableScrollBar.vue';
 import { useNameSpace } from '@fanosy/use';
 import { IFsTableProps } from './types';
-import 'element-plus/es/components/table/style/css';
-import 'element-plus/es/components/table-column/style/css';
-import 'element-plus/es/components/pagination/style/css';
 import './style/table.scss';
 
 defineOptions({

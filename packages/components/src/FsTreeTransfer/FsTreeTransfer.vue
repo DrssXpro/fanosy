@@ -71,13 +71,8 @@
 <script setup lang="ts">
 import { Ref, onMounted, ref, watch, computed } from 'vue';
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue';
-import { ElButton, ElTree, ElCheckbox, ElCheckboxGroup } from 'element-plus';
 import { useNameSpace } from '@fanosy/use';
 import type { ITreeTransferProps, ITreeItem, ICheckItem } from './types';
-import 'element-plus/es/components/button/style/css';
-import 'element-plus/es/components/tree/style/css';
-import 'element-plus/es/components/checkbox/style/css';
-import 'element-plus/es/components/checkbox-group/style/css';
 import './style/index.scss';
 
 defineOptions({

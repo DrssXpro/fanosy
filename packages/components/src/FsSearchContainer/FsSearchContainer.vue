@@ -36,11 +36,9 @@
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, onMounted, ref, useSlots } from 'vue';
-import { ElButton } from 'element-plus';
 import { CaretTop, CaretBottom } from '@element-plus/icons-vue';
 import { useResizeListener, useNameSpace } from '@fanosy/use';
 import { rafThrottle } from '@fanosy/utils';
-import 'element-plus/es/components/button/style/css';
 import './style/container.scss';
 
 defineOptions({
