@@ -10,8 +10,9 @@
 
 <script setup lang="ts">
 import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from 'vue';
-import { ITableScrollbarProps } from './types';
+import { ElScrollbar } from 'element-plus';
 import { debounce, rafThrottle } from '@fanosy/utils';
+import { ITableScrollbarProps } from './types';
 import './style/scrollbar.scss';
 
 defineOptions({

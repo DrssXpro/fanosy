@@ -129,6 +129,13 @@ importers:
       element-plus:
         specifier: ^2.3.9
         version: 2.3.9(vue@3.3.4)
+      nanoid:
+        specifier: ^4.0.2
+        version: 4.0.2
+    devDependencies:
+      '@types/nanoid':
+        specifier: ^3.0.0
+        version: 3.0.0
 
   packages/fanosy:
     dependencies:
@@ -147,6 +154,9 @@ importers:
       nanoid:
         specifier: ^4.0.2
         version: 4.0.2
+      vue:
+        specifier: ^3.3.4
+        version: 3.3.4
 
   packages/use: {}
 
@@ -1065,6 +1075,13 @@ packages:
 
   /@types/mockjs@1.0.7:
     resolution: {integrity: sha512-OCxXz6hEaJOVpRwuJMiVY5a6LtJcih+br9gwB/Q8ooOBikvk5FpBQ31OlNimXo3EqKha1Z7PFBni+q9m+8NCWg==}
+    dev: true
+
+  /@types/nanoid@3.0.0:
+    resolution: {integrity: sha512-UXitWSmXCwhDmAKe7D3hNQtQaHeHt5L8LO1CB8GF8jlYVzOv5cBWDNqiJ+oPEWrWei3i3dkZtHY/bUtd0R/uOQ==}
+    deprecated: This is a stub types definition. nanoid provides its own type definitions, so you do not need this installed.
+    dependencies:
+      nanoid: 4.0.2
     dev: true
 
   /@types/node-sass@4.11.3:
@@ -5102,7 +5119,6 @@ packages:
     resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
     engines: {node: ^14 || ^16 || >=18}
     hasBin: true
-    dev: false
 
   /nanomatch@1.2.13:
     resolution: {integrity: sha512-fpoe2T0RbHwBTBUOftAfBPaDEi06ufaUai0mE6Yn1kacc3SnTErfb/h+X94VXzI64rKFHYImXSvdwGGCmwOqCA==}

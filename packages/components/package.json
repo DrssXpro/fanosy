@@ -10,9 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
     "@fanosy/use": "workspace:^",
     "@fanosy/utils": "workspace:^",
-    "@element-plus/icons-vue": "^2.1.0",
-    "element-plus": "^2.3.9"
+    "element-plus": "^2.3.9",
+    "nanoid": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/nanoid": "^3.0.0"
   }
 }

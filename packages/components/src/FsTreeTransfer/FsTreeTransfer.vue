@@ -70,6 +70,13 @@
 
 <script setup lang="ts">
 import { Ref, onMounted, ref, watch, computed } from 'vue';
+import {
+  ElInput,
+  ElTree,
+  ElButton,
+  ElCheckbox,
+  ElCheckboxGroup
+} from 'element-plus';
 import { ArrowRight, ArrowLeft } from '@element-plus/icons-vue';
 import { useNameSpace } from '@fanosy/use';
 import type { ITreeTransferProps, ITreeItem, ICheckItem } from './types';

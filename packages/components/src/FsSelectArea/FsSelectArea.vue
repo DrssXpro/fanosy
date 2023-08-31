@@ -30,6 +30,7 @@
 
 <script setup lang="ts">
 import { computed, ref, toRaw } from 'vue';
+import { ElSpace } from 'element-plus';
 import FsSelector from './FsSelector.vue';
 import cityData from './cityData/city';
 import type { IAreaList, ICity, ICounty, IProvince } from './types';

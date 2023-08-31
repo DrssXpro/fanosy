@@ -17,6 +17,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { ElSelect, ElOption } from 'element-plus';
 import type { IOptions } from './types';
 
 defineOptions({

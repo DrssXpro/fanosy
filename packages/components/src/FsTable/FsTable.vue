@@ -42,6 +42,7 @@
 
 <script setup lang="ts" generic="T">
 import { ref } from 'vue';
+import { ElTable, ElTableColumn, ElPagination } from 'element-plus';
 import FsTableScrollBar from './FsTableScrollBar.vue';
 import { useNameSpace } from '@fanosy/use';
 import { IFsTableProps } from './types';

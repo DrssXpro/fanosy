@@ -1,6 +1,6 @@
 {
   "name": "fanosy",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
   "main": "lib/index.js",
   "module": "es/index.mjs",
@@ -29,12 +29,15 @@
   "peerDependencies": {
     "@element-plus/icons-vue": "^2.1.0",
     "element-plus": "^2.3.9",
-    "nanoid": "^4.0.2"
+    "nanoid": "^4.0.2",
+    "vue": "^3.3.4"
   },
   "dependencies": {
     "@fanosy/use": "workspace:^",
     "@fanosy/utils": "workspace:^",
     "@element-plus/icons-vue": "^2.1.0",
-    "element-plus": "^2.3.9"
+    "element-plus": "^2.3.9",
+    "nanoid": "^4.0.2",
+    "vue": "^3.3.4"
   }
 }
