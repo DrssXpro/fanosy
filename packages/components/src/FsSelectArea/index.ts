@@ -1,5 +1,5 @@
 import _FsSelectArea from './FsSelectArea.vue';
-import { withInstall } from '@fanosy/utils';
+import { withInstall } from '../utils';
 
 const FsSelectArea = withInstall(_FsSelectArea);
 

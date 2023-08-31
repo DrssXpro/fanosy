@@ -1,5 +1,5 @@
 import _FsBounceCountTo from './FsBounceCountTo.vue';
-import { withInstall } from '@fanosy/utils';
+import { withInstall } from '../utils';
 
 const FsBounceCountTo = withInstall(_FsBounceCountTo);
 

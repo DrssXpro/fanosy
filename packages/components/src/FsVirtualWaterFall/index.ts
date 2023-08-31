@@ -1,5 +1,5 @@
 import _FsVirtualWaterFall from './FsVirtualWaterFall.vue';
-import { withInstall } from '@fanosy/utils';
+import { withInstall } from '../utils';
 
 const FsVirtualWaterFall = withInstall(_FsVirtualWaterFall);
 

@@ -1,5 +1,5 @@
 import _FsTreeTransfer from './FsTreeTransfer.vue';
-import { withInstall } from '@fanosy/utils';
+import { withInstall } from '../utils';
 
 const FsTreeTransfer = withInstall(_FsTreeTransfer);
 

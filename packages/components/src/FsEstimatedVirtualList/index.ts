@@ -1,5 +1,5 @@
 import _FsEstimatedVirtualList from './FsEstimatedVirtualList.vue';
-import { withInstall } from '@fanosy/utils';
+import { withInstall } from '../utils';
 
 const FsEstimatedVirtualList = withInstall(_FsEstimatedVirtualList);
 

@@ -1,5 +1,5 @@
 import _FsCreateSelect from './FsCreateSelect.vue';
-import { withInstall } from '@fanosy/utils';
+import { withInstall } from '../utils';
 
 const FsCreateSelect = withInstall(_FsCreateSelect);
 

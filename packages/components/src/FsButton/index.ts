@@ -1,5 +1,5 @@
 import _FsButton from './FsButton.vue';
-import { withInstall } from '@fanosy/utils';
+import { withInstall } from '../utils';
 
 const FsButton = withInstall(_FsButton);
 export { FsButton };
