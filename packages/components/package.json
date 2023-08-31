@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@fanosy/use": "workspace:^",
-    "@fanosy/utils": "workspace:^"
+    "@fanosy/utils": "workspace:^",
+    "@element-plus/icons-vue": "^2.1.0",
+    "element-plus": "^2.3.9"
   }
 }

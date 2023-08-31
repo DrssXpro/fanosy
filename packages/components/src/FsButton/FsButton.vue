@@ -13,6 +13,7 @@
   </el-button>
 </template>
 <script setup lang="ts">
+import { ElButton } from 'element-plus';
 import {
   debounce as debounceToolFn,
   throttle as throttleToolFn
