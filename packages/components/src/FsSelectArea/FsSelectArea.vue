@@ -61,7 +61,7 @@ const cityList = ref<Record<string, ICity>>({});
 const countyList = ref<Record<string, ICounty>>({});
 const disabledCity = computed(() => result.value.length < 1);
 const disabledCounty = computed(() => result.value.length < 2);
-const result = ref<Array<string[]>>([]);
+const result = ref<Array<string[]>>(new Array(3).fill('').map(() => []));
 
 // 选择省
 const selectProvince = (value: string) => {
@@ -99,7 +99,7 @@ const selectCounty = (value: string) => {
 
 // 清空省：保存结果、city、county 选项都需清空
 const clearProvince = () => {
-  result.value = [];
+  result.value = new Array(3).fill('').map(() => []);
   cityList.value = {};
   countyList.value = {};
 };
@@ -107,14 +107,14 @@ const clearProvince = () => {
 // 清空市：只保存省结果，county 选项都需清空
 const clearCity = () => {
   cityRef.value!.clearSelect();
-  result.value = [result.value[0]];
+  result.value[1] = [];
   countyList.value = {};
 };
 
 // 清空区/县：保存省、市结果
 const clearCounty = () => {
   countyRef.value!.clearSelect();
-  result.value.pop();
+  result.value[2] = [];
 };
 
 // 格式化信息

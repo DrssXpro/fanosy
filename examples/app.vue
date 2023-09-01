@@ -1,40 +1,13 @@
 <template>
   <div class="test-container">
-    <fs-water-fall
-      v-model:loading="loading"
-      :gap="20"
-      :column="6"
-      :request="requestData"
-      :page-size="20"
-    >
-      <template #item="{ item }">
-        <el-image :src="item.url" alt="图片" class="image" lazy></el-image>
-      </template>
-    </fs-water-fall>
+    <fs-select-area :gap="20" @chooseArea="handle" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { IImageItem } from '@fanosy/components';
-
-const loading = ref(false);
-
-const requestData = (page: number, pageSize: number): Promise<IImageItem[]> => {
-  return new Promise<IImageItem[]>((resolve) => {
-    fetch(
-      `https://blogback.fasyncsy.com.cn/vilipix/ranking?${pageSize}=30&page=${page}`
-    ).then(async (res) => {
-      const result = await res.json();
-      const imageList: IImageItem[] = result.data.rows.map((i: any) => ({
-        id: i.picture_id,
-        url: i.original_url,
-        height: i.height,
-        width: i.width
-      }));
-      resolve(imageList);
-    });
-  });
+import { FsSelectArea } from '@fanosy/components';
+const handle = (res: string[][]) => {
+  console.log(res);
 };
 </script>
 
