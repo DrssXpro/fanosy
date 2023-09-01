@@ -29,7 +29,7 @@ export default {
   ],
   '/component': [
     {
-      text: '二次封装组件',
+      text: '业务组件',
       children: [
         {
           text: 'FsButton 增强版ElButton',
@@ -38,11 +38,15 @@ export default {
         {
           text: 'FsCreateSelect 创建选项下拉框',
           link: '/component/fs-create-select'
+        },
+        {
+          text: 'FsSelectArea 省市区选择器',
+          link: '/component/fs-select-area'
         }
       ]
     },
     {
-      text: '动画组件',
+      text: '虚拟列表相关',
       children: [
         {
           text: 'ListModifyTransition 列表CURD过渡',
@@ -51,24 +55,6 @@ export default {
         {
           text: 'ListEnterTransition 列表进入过渡',
           link: '/component/list-enter-transition'
-        }
-      ]
-    },
-    {
-      text: '数据展示',
-      children: [
-        {
-          text: 'VirtualWaterfall 瀑布流虚拟列表',
-          link: '/component/virtual-waterfall'
-        }
-      ]
-    },
-    {
-      text: '交互组件',
-      children: [
-        {
-          text: 'Drag 拖拽容器',
-          link: '/component/drag'
         }
       ]
     }

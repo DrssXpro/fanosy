@@ -1,10 +1,8 @@
-import { defineUserConfig } from 'vuepress';
-import { getDirname, path } from '@vuepress/utils';
-import { defaultTheme } from '@vuepress/theme-default';
+import { defineUserConfig, defaultTheme } from 'vuepress';
 import sidebar from '../../src/sidebar';
 import { searchPlugin } from '@vuepress/plugin-search';
+import { getDirname, path } from '@vuepress/utils';
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components';
-
 const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({

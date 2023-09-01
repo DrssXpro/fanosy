@@ -20,6 +20,8 @@ import { FsButton } from 'fanosy';
 
 `debounce` 和 `throttle` 属性按照需求传入，如果都不传入则默认不开启防抖和节流的效果，两者都传入时以防抖为主
 
+点击下面的按钮查看控制台的输出效果👇
+
 <CodeShow>
   <template #source>
     <ClientOnly>
@@ -28,7 +30,7 @@ import { FsButton } from 'fanosy';
   </template>
   <template #meta>
 
- @[code vue{3-6,14,16-17,25-27,41,48,50-59}:no-line-numbers](../\.vuepress/components/fs-button-show.vue)
+ @[code vue{}:no-line-numbers](../\.vuepress/components/fs-button-show.vue)
 
   </template>
 </CodeShow>
