@@ -4,8 +4,8 @@ export default {
       text: '基础',
       children: [
         {
-          text: '设计',
-          link: '/guide/design'
+          text: '灵感',
+          link: '/guide/inspiration'
         },
         {
           text: '安装',
@@ -18,15 +18,11 @@ export default {
       ]
     },
     {
-      text: '进阶',
+      text: '开发',
       children: [
         {
-          text: '内置过渡动画',
-          link: '/guide/advanced-transitions'
-        },
-        {
-          text: '更新日志',
-          link: '/guide/advanced-changelog'
+          text: '开发指南',
+          link: '/guide/dev'
         }
       ]
     }

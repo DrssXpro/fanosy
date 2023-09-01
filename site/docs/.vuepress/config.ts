@@ -18,6 +18,10 @@ export default defineUserConfig({
     notFound: ['页面走丢了捏~'],
     navbar: [
       {
+        text: '灵感来源',
+        link: '/guide/inspiration'
+      },
+      {
         text: '组件',
         link: '/component/fs-button'
       },
