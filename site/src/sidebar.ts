@@ -34,6 +34,10 @@ export default {
         {
           text: 'FsButton 增强版ElButton',
           link: '/component/fs-button'
+        },
+        {
+          text: 'FsCreateSelect 创建选项下拉框',
+          link: '/component/fs-create-select'
         }
       ]
     },

@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "element-plus": "^2.3.9",
     "fanosy": "workspace:^"
   },
   "devDependencies": {

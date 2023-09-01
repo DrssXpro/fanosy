@@ -6,9 +6,9 @@
 
 ### 按需导入
 
-Fanosy 提供了基于 ES Module 开箱即用的 [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) 功能。通过 [Gulp](https://gulpjs.com/) 手动单独打包组件内置样式。
+Fanosy 提供了基于 ES Module 开箱即用的 [Tree Shaking](https://webpack.js.org/guides/tree-shaking/) 功能。通过 [Gulp](https://gulpjs.com/) 手动单独打包组件内置样式，因此想用哪个导就完了
 
-终上所述，想要哪个导哪个
+需要注意的是：部分element-plus二次封装的组件依赖原组件样式，因此在使用时请确保安装elmenet-plus并**手动引入对应组件样式**，具体引入的样式文件请查看组件部分文档
 
 ```vue
 <template>
@@ -16,6 +16,7 @@ Fanosy 提供了基于 ES Module 开箱即用的 [Tree Shaking](https://webpack.
 </template>
 <script>
 import { FsButton } from 'fanosy'
+import 'element-plus/es/components/button/style/css';
 export default {
   components: { FsButton }
 };
@@ -24,12 +25,15 @@ export default {
 
 ### 全局导入
 
-直接导就完了
+废话不多说，开导
+
+>注意如果使用了部分element-plus二次封装的组件别忘了把全局样式也一块导了捏~
 
 ```typescript
 import { createApp } from 'vue';
 import App from './app.vue';
 import fanosy from '@fanosy/components';
+import 'element-plus/dist/index.css'
 
 const app = createApp(App);
 app.use(fanosy);

@@ -1,15 +1,15 @@
-# FsButton 增强版ElButton
+# FsCreateSelect 创建选项下拉框
 
 ## 介绍
 
-`FsButton` 完美继承了 `ElButton` 组件的使用方式(大概)，并在其基础上提供了**点击事件**的**防抖、节流**功能
+`FsCreateSelect` 基于 `ElSelect` 的功能基础上增加了额外创建选项的功能，其内部使用 nanoid 生成选项的唯一 value 值
 
 ## 引入
 
 此组件引入即可使用
 
 ```typescript
-import { FsButton } from 'fanosy';
+import { FsCreateSelect } from 'fanosy';
 ```
 
 ## 代码演示
@@ -23,12 +23,12 @@ import { FsButton } from 'fanosy';
 <CodeShow>
   <template #source>
     <ClientOnly>
-      <fs-button-show />
+      <fs-create-select-show />
     </ClientOnly>
   </template>
   <template #meta>
 
- @[code vue{3-6,14,16-17,25-27,41,48,50-59}:no-line-numbers](../\.vuepress/components/fs-button-show.vue)
+ @[code vue{3-6,14,16-17,25-27,41,48,50-59}:no-line-numbers](../\.vuepress/components/fs-create-select-show.vue)
 
   </template>
 </CodeShow>
