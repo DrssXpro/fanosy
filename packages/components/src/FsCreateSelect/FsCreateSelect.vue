@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { ElInput, ElOption, ElButton } from 'element-plus';
+import { ElInput, ElOption, ElButton, ElSelect } from 'element-plus';
 import { nanoid } from 'nanoid';
 import { useNameSpace } from '@fanosy/use';
 import { ISelectOptions } from './types';
