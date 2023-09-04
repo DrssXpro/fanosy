@@ -7,12 +7,13 @@ const __dirname = getDirname(import.meta.url);
 
 export default defineUserConfig({
   lang: 'zh-CN',
-  head: [['link', { rel: 'icon', href: '/images/favicon.png' }]],
+  head: [['link', { rel: 'icon', href: '/images/bg.jpg' }]],
   theme: defaultTheme({
-    logo: '/images/favicon.png',
+    logo: '/images/bg.jpg',
     repo: 'https://github.com/DrssXpro/fanosy/tree/main/packages/components',
     docsRepo: 'https://github.com/DrssXpro/fanosy/tree/main/site',
     docsBranch: 'main',
+    colorModeSwitch: false,
     notFound: ['页面走丢了捏~'],
     navbar: [
       {

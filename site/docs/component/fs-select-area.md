@@ -18,7 +18,6 @@ import { FsSelectArea } from 'fanosy';
 
 该组件只需要简单配置布局相关内容，之后监听事件拿到选择的结果即可
 
-
 <CodeShow>
   <template #source>
     <ClientOnly>
@@ -46,3 +45,12 @@ import { FsSelectArea } from 'fanosy';
 | 事件名     | 说明                                       | 结果类型    |
 | :--------- | ------------------------------------------ | ----------- |
 | chooseArea | 用户选择最后一个区域框时触发，返回选择结果 | string\[][] |
+
+```typescript
+// 例如选择: 北京市 市辖区 东城区
+const result = [
+  ['11000', '北京市'],
+  ['110100', '市辖区'],
+  ['110101', '东城区']
+];
+```

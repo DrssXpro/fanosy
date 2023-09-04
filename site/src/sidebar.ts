@@ -42,6 +42,14 @@ export default {
         {
           text: 'FsSelectArea 省市区选择器',
           link: '/component/fs-select-area'
+        },
+        {
+          text: 'FsTreeTransfer 树形穿梭框',
+          link: '/component/fs-tree-transfer'
+        },
+        {
+          text: 'FsSearchContainer 搜索布局容器',
+          link: '/component/fs-search-container'
         }
       ]
     },
