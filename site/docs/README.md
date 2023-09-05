@@ -6,8 +6,8 @@ actions:
   - text: 快速开始
     link: /guide/start
     type: primary
-  - text: 项目简介
-    link: /guide/design
+  - text: 灵感来源
+    link: /guide/inspiration
     type: secondary
 features:
   - title: Vue3.3

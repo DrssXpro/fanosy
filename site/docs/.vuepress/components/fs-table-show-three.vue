@@ -1,13 +1,21 @@
 <template>
-  <div class="test-container">
+  <div class="table-container">
     <div class="box">
-      <fs-table :data="tableData" :columns="columns"> </fs-table>
+      <fs-table
+        :data="tableData"
+        :columns="columns"
+        show-pagination
+        :pagination="{ pageSize: 10, total: 100, currentPage: 1 }"
+      ></fs-table>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { FsTable, type IFsTableColumn } from '@fanosy/components';
+import { FsTable, type IFsTableColumn } from 'fanosy';
+import 'element-plus/es/components/table/style/css';
+import 'element-plus/es/components/table-column/style/css';
+import 'element-plus/es/components/pagination/style/css';
 
 interface IData {
   date: string;
@@ -81,42 +89,14 @@ const columns: IFsTableColumn[] = [
 ];
 </script>
 
-<style scoped lang="scss">
-.test-container {
-  margin: 0 auto;
-  width: 90vw;
-  height: 90vh;
-  border: 1px solid red;
-  box-sizing: border-box;
-  padding: 10px;
-  .box {
-    width: 100%;
-    height: 300px;
-    border: 1px solid black;
-  }
-}
-
-.list-item {
+<style scoped>
+.table-container {
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
-  animation: identifier 0.25s; // 添加动画，使其出现时更加丝滑
 }
-
-.image {
+.box {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@keyframes identifier {
-  from {
-    opacity: 0;
-    transform: translateY(200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  height: 300px;
+  border: 1px solid black;
 }
 </style>

@@ -50,6 +50,10 @@ export default {
         {
           text: 'FsSearchContainer 搜索布局容器',
           link: '/component/fs-search-container'
+        },
+        {
+          text: 'FsTable 高级表格',
+          link: '/component/fs-table'
         }
       ]
     },
