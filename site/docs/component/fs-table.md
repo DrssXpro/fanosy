@@ -99,35 +99,108 @@ export interface IFsTableColumn {
   </template>
 </CodeShow>
 
+### 支持分页配置
+
+`FsTable` 内置了 `ElPagination`，只需传入对应的属性、监听对应的事件即可拥有一个分页器，具体查看下面实例代码
+
+<CodeShow>
+  <template #source>
+    <ClientOnly>
+      <fs-table-show-four />
+    </ClientOnly>
+  </template>
+  <template #meta>
+
+@[code vue{}](../.vuepress/components/fs-table-show-four.vue)
+
+  </template>
+</CodeShow>
+
+### 保留原有的插槽使用
+
+当然，可能您并不习惯我们的使用方式，但是不用担心，`FsTable` 保留了之前 `ElTable` 的插槽用法，您依然可以按照之前的方式来自定义列，只需使用我们的具名插槽 **table** 即可,
+
+<CodeShow>
+  <template #source>
+    <ClientOnly>
+      <fs-table-show-five />
+    </ClientOnly>
+  </template>
+  <template #meta>
+
+@[code vue{}](../.vuepress/components/fs-table-show-five.vue)
+
+  </template>
+</CodeShow>
+
+### 保留ElTable的实例方法
+
+通过设置 `ref` 我们可以拿到 `ElTable` 的实例来调用上面的方法，如下例所示设置全选，具体可以查看 `ElTable` 文档
+
+<CodeShow>
+  <template #source>
+    <ClientOnly>
+      <fs-table-show-six />
+    </ClientOnly>
+  </template>
+  <template #meta>
+
+@[code vue{}](../.vuepress/components/fs-table-show-six.vue)
+
+  </template>
+</CodeShow>
+
 ## API
 
-### Props
+### Props (FsTable)
 
-| 参数        | 说明               | 类型        | 是否必传 | 默认值             |
-| ----------- | ------------------ | ----------- | -------- | ------------------ |
-| dataSource  | 树形数据源         | ITreeItem[] | 是       | 无                 |
-| title       | 穿梭框标题         | string[]    | 否       | ['列表1', '列表2'] |
-| divider     | 右侧条目分隔符     | string      | 否       | '/'                |
-| activeColor | 搜索关键词展示颜色 | string      | 否       | '#f00'             |
-
-### Event
-
-| 事件名      | 说明                                         | 结果类型     |
-| :---------- | -------------------------------------------- | ------------ |
-| selectValue | 选择类目至右侧框时触发该事件，拿到选择的结果 | IcheckItem[] |
+| 参数           | 说明                                   | 类型              | 是否必传 | 默认值         |
+| -------------- | -------------------------------------- | ----------------- | -------- | -------------- |
+| data           | 数据源                                 | T[]               | 是       | 无             |
+| columns        | 渲染配置项                             | IFsTableColumn[]  | 否       | 无             |
+| emptyText      | 表格数据为空时的文本                   | string            | 否       | '表格数据为空' |
+| isSelect       | 是否开启选择列                         | boolean           | 否       | false          |
+| showPagination | 是否启用分页器                         | boolean           | 否       | false          |
+| pagination     | 分页器配置项（需先开启分页器）         | IPaginationConfig | 否       | 无             |
+| tableConfig    | table组件配置项（内部绑定到ElTable上） | ITableConfg       | 否       | 无             |
 
 ```typescript
-interface ITreeItem {
-  id: string | number;
+// 列配置项
+interface IFsTableColumn {
+  prop: string;
   label: string;
-  disabled: boolean;
-  isActive: boolean;
-  parentId?: string | number;
-  children?: ITreeItem[];
+  columnKey: string;
+  [key: string]: any;
 }
 
-interface ICheckItem {
-  id: string | number;
-  label: string;
+// 分页器配置
+interface IPaginationConfig {
+  total: number;
+  currentPage: number;
+  pageSize: number;
+}
+
+interface ITableConfg {
+  [key: string]: any;
 }
 ```
+
+
+
+### Event (FsTable)
+
+| 事件名            | 说明                     | 结果类型 |
+| :---------------- | ------------------------ | -------- |
+| pageSizeChange    | pageSize改变时触发该事件 | number   |
+| currentPageChange | page改变时触发该事件     | number   |
+
+
+
+### Props（FsTableScrollBar）
+
+| 参数         | 说明                            | 类型    | 是否必传 | 默认值 |
+| ------------ | ------------------------------- | ------- | -------- | ------ |
+| isFixed      | 是否开启自适应滚动条            | boolean | 是       | 无     |
+| headerSticky | 是否固定表格头部，滚动时吸顶    | boolean | 否       | false  |
+| bottom       | 自适应滚动条距离窗口底部的距离  | number  | 否       | 10     |
+| scrollDelay  | 滚动重新计算防抖: 200 ~ 1000 ms | number  | 否       | 300    |

@@ -170,7 +170,13 @@ importers:
       fanosy:
         specifier: workspace:^
         version: link:../packages/fanosy
+      mockjs:
+        specifier: ^1.1.0
+        version: 1.1.0
     devDependencies:
+      '@types/mockjs':
+        specifier: ^1.0.7
+        version: 1.0.7
       '@vuepress/client':
         specifier: 2.0.0-beta.67
         version: 2.0.0-beta.67

@@ -54,19 +54,39 @@ export default {
         {
           text: 'FsTable 高级表格',
           link: '/component/fs-table'
+        },
+        {
+          text: 'FsBounceCountTo 数字滚动',
+          link: '/component/fs-bounce-count-to'
+        },
+        {
+          text: 'FsCategorySelector 分类选择器',
+          link: '/component/fs-category-selector'
+        },
+        {
+          text: 'FsMessage 消息盒',
+          link: '/component/fs-message-box'
         }
       ]
     },
     {
-      text: '虚拟列表相关',
+      text: '虚拟列表',
       children: [
         {
-          text: 'ListModifyTransition 列表CURD过渡',
-          link: '/component/list-modify-transition'
+          text: 'FsVirtualList 定高虚拟列表',
+          link: '/component/fs-virtual-list'
         },
         {
-          text: 'ListEnterTransition 列表进入过渡',
-          link: '/component/list-enter-transition'
+          text: 'FsEstimatedVirtualList 不定高虚拟列表',
+          link: '/component/fs-estimated-virtual-list'
+        },
+        {
+          text: 'FsVirtualWaterFall 瀑布流虚拟列表',
+          link: '/component/fs-virtual-water-fall'
+        },
+        {
+          text: 'FsWaterFall 瀑布流组件',
+          link: '/component/fs-water-fall'
         }
       ]
     }
