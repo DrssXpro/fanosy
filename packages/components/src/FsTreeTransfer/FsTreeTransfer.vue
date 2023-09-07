@@ -57,8 +57,11 @@
         <div class="list-content">
           <el-checkbox-group class="check-item" v-model="checks">
             <el-checkbox v-for="i in checkEachs" :key="i" :label="i">
-              <div class="check_label" :title="treeMap.get(i)?.value.label">
-                {{ treeMap.get(i)?.value.label }}
+              <div
+                class="check_label"
+                :title="rightCheckList.find((item) => item.id === i)!.label"
+              >
+                {{ rightCheckList.find((item) => item.id === i)!.label }}
               </div>
             </el-checkbox>
           </el-checkbox-group>

@@ -1,84 +1,38 @@
 <template>
   <div class="test-container">
-    <div class="box">
-      <fs-table :data="tableData" :columns="columns"> </fs-table>
-    </div>
+    <fs-search-container>
+      <template #search>
+        <fs-search-item label="文章搜索1">
+          <el-input v-model="value" clearable placeholder="请输入内容" />
+        </fs-search-item>
+        <fs-search-item label="文章搜索2">
+          <el-input v-model="value" clearable />
+        </fs-search-item>
+        <fs-search-item label="文章搜索3">
+          <el-input v-model="value" clearable />
+        </fs-search-item>
+        <fs-search-item label="文章搜索4">
+          <el-input v-model="value" clearable />
+        </fs-search-item>
+        <fs-search-item label="文章搜索5">
+          <el-select v-model="value" placeholder="请选择内容" clearable>
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+        </fs-search-item>
+      </template>
+    </fs-search-container>
   </div>
 </template>
 
 <script setup lang="ts">
-import { FsTable, type IFsTableColumn } from '@fanosy/components';
+import { ref } from 'vue';
 
-interface IData {
-  date: string;
-  name: string;
-  address: string;
-}
-
-const tableData: IData[] = [
-  {
-    date: '2016-05-03',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-02',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-04',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  },
-  {
-    date: '2016-05-01',
-    name: 'Tom',
-    address: 'No. 189, Grove St, Los Angeles'
-  }
-];
-
-const columns: IFsTableColumn[] = [
-  {
-    prop: 'date',
-    columnKey: 'date',
-    label: '日期',
-    width: 400
-  },
-  {
-    prop: 'name',
-    columnKey: 'name',
-    label: '名字',
-    width: 400
-  },
-  {
-    prop: 'address',
-    columnKey: 'address',
-    label: '地址',
-    fixed: 'right',
-    width: 150
-  }
-];
+const value = ref('');
 </script>
 
 <style scoped lang="scss">

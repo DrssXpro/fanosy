@@ -35,6 +35,7 @@
 import { reactive } from 'vue';
 import { useNameSpace } from '@fanosy/use';
 import { IMessageBoxProps } from './types';
+import { ElIcon } from 'element-plus';
 import { Close } from '@element-plus/icons-vue';
 import './style/index.scss';
 
