@@ -95,7 +95,7 @@ const initScroll = (isFirst: boolean) => {
     tableRect.offsetLeft = rect.left;
     tableRect.offsetTop = tableRect.offsetTop ? tableRect.offsetTop : rect.top; // 第一次获取之后不再改变
     if (!scrollHorizontalEl.value) {
-      scrollHorizontalEl.value = contentRef.value!.querySelector(
+      scrollHorizontalEl.value = document.querySelector(
         '.fs-table-scrollbar  .is-horizontal'
       )! as HTMLDivElement;
     }
