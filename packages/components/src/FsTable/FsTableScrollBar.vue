@@ -148,25 +148,26 @@ const handleComputedFixHead = rafThrottle(() => {
 
 // 从该组件开始向上寻找是否存在一个具有滚动条的元素
 const findScrollElement = () => {
-  // scrollContainer.value = document.querySelector(
-  //   '.el-scrollbar__wrap .el-scrollbar__wrap--hidden-default'
-  // )!;
+  // fix：固定scroll元素
+  scrollContainer.value = document.querySelector(
+    '.el-scrollbar__wrap .el-scrollbar__wrap--hidden-default'
+  )!;
 
-  const el = contentRef.value!;
-  const parent = el?.parentElement;
-  if (parent) {
-    findScrollParent(parent);
-  }
-  // 递归向上查找滚动元素
-  function findScrollParent(el: any) {
-    if (!el) return null;
+  // const el = contentRef.value!;
+  // const parent = el?.parentElement;
+  // if (parent) {
+  //   findScrollParent(parent);
+  // }
+  // // 递归向上查找滚动元素
+  // function findScrollParent(el: any) {
+  //   if (!el) return null;
 
-    if (el.scrollHeight > el.clientHeight) {
-      scrollContainer.value = el;
+  //   if (el.scrollHeight > el.clientHeight) {
+  //     scrollContainer.value = el;
 
-      return;
-    }
-    findScrollParent(el.parentElement);
-  }
+  //     return;
+  //   }
+  //   findScrollParent(el.parentElement);
+  // }
 };
 </script>
