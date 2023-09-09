@@ -99,7 +99,7 @@ const initScroll = (isFirst: boolean) => {
     tableRect.offsetTop = tableRect.offsetTop ? tableRect.offsetTop : rect.top; // 第一次获取之后不再改变
     if (!scrollHorizontalEl.value) {
       scrollHorizontalEl.value = document.querySelector(
-        `.${uniqueKey.value}  .is-horizontal`
+        `.${uniqueKey.value} .is-horizontal`
       )! as HTMLDivElement;
     }
   }
@@ -150,7 +150,7 @@ const handleComputedFixHead = rafThrottle(() => {
 const findScrollElement = () => {
   // fix：固定scroll元素
   scrollContainer.value = document.querySelector(
-    '.el-scrollbar__wrap .el-scrollbar__wrap--hidden-default'
+    `.${uniqueKey.value} .el-scrollbar__wrap .el-scrollbar__wrap--hidden-default`
   )!;
 
   // const el = contentRef.value!;
