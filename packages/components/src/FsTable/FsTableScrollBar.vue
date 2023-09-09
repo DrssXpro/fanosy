@@ -1,5 +1,8 @@
 <template>
-  <div class="fs-table-scrollbar" @mouseenter="handleComputedScrollbar">
+  <div
+    :class="['fs-table-scrollbar', uniqueKey]"
+    @mouseenter="handleComputedScrollbar"
+  >
     <el-scrollbar>
       <div class="fs-table-scrollbar-content" ref="contentRef">
         <slot></slot>
@@ -12,6 +15,7 @@
 import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from 'vue';
 import { ElScrollbar } from 'element-plus';
 import { debounce, rafThrottle } from '@fanosy/utils';
+import { nanoid } from 'nanoid';
 import { ITableScrollbarProps } from './types';
 import './style/scrollbar.scss';
 
@@ -21,7 +25,6 @@ defineOptions({
 
 const props = withDefaults(defineProps<ITableScrollbarProps>(), {
   headerSticky: false,
-  bottom: 10,
   scrollDelay: 300
 });
 
@@ -41,7 +44,7 @@ const tableRect = reactive({
   offsetTop: 0
 });
 
-const isBottom = ref(false);
+const uniqueKey = ref(nanoid(5));
 
 const delay = ref(300);
 
@@ -96,7 +99,7 @@ const initScroll = (isFirst: boolean) => {
     tableRect.offsetTop = tableRect.offsetTop ? tableRect.offsetTop : rect.top; // 第一次获取之后不再改变
     if (!scrollHorizontalEl.value) {
       scrollHorizontalEl.value = document.querySelector(
-        '.fs-table-scrollbar  .is-horizontal'
+        `.${uniqueKey.value}  .is-horizontal`
       )! as HTMLDivElement;
     }
   }
@@ -112,33 +115,19 @@ const handleComputedScrollbar = debounce(() => {
   initScroll(false);
   const clientHeight = scrollContainer.value?.clientHeight || 0;
   const scrollTop = scrollContainer.value?.scrollTop || 0;
-  isBottom.value = scrollTop + clientHeight >= tableRect.height;
-  resetScrollbar();
+  resetScrollbar(clientHeight, scrollTop);
 }, delay.value);
 
 // 重置水平滚动条样式，固定在视口下方，而不是表格底部
-const resetScrollbar = () => {
+const resetScrollbar = (clientHeight: number, scrollTop: number) => {
   if (scrollHorizontalEl.value) {
     // 判断是否已滚动到底部，已到达底部则需要将滚动条还原至表格底部
-    if (!isBottom.value) {
-      scrollHorizontalEl.value.style.display = 'none';
-      const computedBottom =
-        document.documentElement.clientHeight -
-        ((scrollContainer.value?.clientHeight || 0) + tableRect.offsetTop);
-      scrollHorizontalEl.value.style.position = `fixed`;
-      scrollHorizontalEl.value.style.width = `${tableRect.width}px`;
-      scrollHorizontalEl.value.style.left = `${tableRect.offsetLeft}px`;
-      scrollHorizontalEl.value.style.bottom = `${
-        computedBottom + props.bottom
-      }px`;
-      scrollHorizontalEl.value.style.display = '';
-    } else {
-      scrollHorizontalEl.value.style.width = '';
-      scrollHorizontalEl.value.style.position = '';
-      scrollHorizontalEl.value.style.left = '';
-      scrollHorizontalEl.value.style.bottom = '';
-      scrollHorizontalEl.value.style.display = '';
-    }
+    scrollHorizontalEl.value.style.display = 'none';
+    scrollHorizontalEl.value.style.position = `absolute`;
+    scrollHorizontalEl.value.style.width = `${tableRect.width}px`;
+    scrollHorizontalEl.value.style.left = `${tableRect.offsetLeft}px`;
+    scrollHorizontalEl.value.style.top = `${clientHeight + scrollTop - 50}px`;
+    scrollHorizontalEl.value.style.display = '';
   }
 };
 

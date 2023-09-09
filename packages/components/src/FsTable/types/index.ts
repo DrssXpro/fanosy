@@ -39,8 +39,6 @@ export interface ITableScrollbarProps {
   isFixed: boolean;
   // 是否固定表格头部，滚动时吸顶
   headerSticky?: boolean;
-  // 自适应滚动条距离窗口底部的距离
-  bottom?: number;
   // 滚动重新计算防抖: 200 ~ 1000 ms
   scrollDelay?: number;
 }

@@ -185,16 +185,12 @@ interface ITableConfg {
 }
 ```
 
-
-
 ### Event (FsTable)
 
 | 事件名            | 说明                     | 结果类型 |
 | :---------------- | ------------------------ | -------- |
 | pageSizeChange    | pageSize改变时触发该事件 | number   |
 | currentPageChange | page改变时触发该事件     | number   |
-
-
 
 ### Props（FsTableScrollBar）
 

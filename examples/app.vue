@@ -1,12 +1,14 @@
 <template>
-  <div class="table-container">
-    <div class="box">
-      <fs-table
-        :data="tableData"
-        :columns="columns"
-        show-pagination
-        :pagination="{ pageSize: 10, total: 100, currentPage: 1 }"
-      ></fs-table>
+  <div class="content">
+    <div class="table-container">
+      <div class="box">
+        <fs-table
+          :data="tableData"
+          :columns="columns"
+          show-pagination
+          :pagination="{ pageSize: 10, total: 100, currentPage: 1 }"
+        ></fs-table>
+      </div>
     </div>
   </div>
 </template>
@@ -89,9 +91,14 @@ const columns: IFsTableColumn[] = [
 </script>
 
 <style scoped>
+.content {
+  width: 100%;
+  height: 150vh;
+}
 .table-container {
   width: 100%;
   height: 100%;
+  margin-bottom: 20px;
 }
 .box {
   width: 100%;
