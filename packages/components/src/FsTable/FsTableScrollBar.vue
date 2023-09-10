@@ -15,7 +15,7 @@
 import { onBeforeMount, onMounted, onUnmounted, reactive, ref } from 'vue';
 import { ElScrollbar } from 'element-plus';
 import { debounce, rafThrottle } from '@fanosy/utils';
-import { nanoid } from 'nanoid';
+import { customAlphabet } from 'nanoid';
 import { ITableScrollbarProps } from './types';
 import './style/scrollbar.scss';
 
@@ -27,6 +27,10 @@ const props = withDefaults(defineProps<ITableScrollbarProps>(), {
   headerSticky: false,
   scrollDelay: 300
 });
+
+// fix: nanoid生成字符集，不携带数字
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+const generateId = customAlphabet(alphabet, 5);
 
 // 水平滚动条 DOM
 const scrollHorizontalEl = ref<HTMLDivElement>();
@@ -44,7 +48,7 @@ const tableRect = reactive({
   offsetTop: 0
 });
 
-const uniqueKey = ref(nanoid(5));
+const uniqueKey = ref(generateId());
 
 const delay = ref(300);
 
@@ -125,7 +129,7 @@ const resetScrollbar = (clientHeight: number, scrollTop: number) => {
     scrollHorizontalEl.value.style.display = 'none';
     scrollHorizontalEl.value.style.position = `absolute`;
     scrollHorizontalEl.value.style.width = `${tableRect.width}px`;
-    scrollHorizontalEl.value.style.left = `${tableRect.offsetLeft}px`;
+    scrollHorizontalEl.value.style.left = `5px`;
     scrollHorizontalEl.value.style.top = `${clientHeight + scrollTop - 50}px`;
     scrollHorizontalEl.value.style.display = '';
   }
@@ -148,9 +152,9 @@ const handleComputedFixHead = rafThrottle(() => {
 
 // 从该组件开始向上寻找是否存在一个具有滚动条的元素
 const findScrollElement = () => {
-  // fix：固定scroll元素
+  // fix: 获取固定滚动元素
   scrollContainer.value = document.querySelector(
-    `.${uniqueKey.value} .el-scrollbar__wrap .el-scrollbar__wrap--hidden-default`
+    `.${uniqueKey.value} .el-scrollbar__wrap--hidden-default`
   )!;
 
   // const el = contentRef.value!;
@@ -164,6 +168,7 @@ const findScrollElement = () => {
 
   //   if (el.scrollHeight > el.clientHeight) {
   //     scrollContainer.value = el;
+  //     console.log('check:', scrollContainer.value);
 
   //     return;
   //   }
