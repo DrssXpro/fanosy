@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fanosy/utils": "workspace:^",
     "element-plus": "^2.3.9",
     "fanosy": "workspace:^",
     "mockjs": "^1.1.0"

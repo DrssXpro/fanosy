@@ -167,6 +167,9 @@ importers:
 
   site:
     dependencies:
+      '@fanosy/utils':
+        specifier: workspace:^
+        version: link:../packages/utils
       element-plus:
         specifier: ^2.3.9
         version: 2.3.9(vue@3.3.4)
