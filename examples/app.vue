@@ -14,10 +14,10 @@
 </template>
 
 <script setup lang="ts">
-import { FsTable, type IFsTableColumn } from '@fanosy/components';
-import 'element-plus/es/components/table/style/css';
-import 'element-plus/es/components/table-column/style/css';
-import 'element-plus/es/components/pagination/style/css';
+import { type IFsTableColumn } from '@fanosy/components';
+// import 'element-plus/es/components/table/style/css';
+// import 'element-plus/es/components/table-column/style/css';
+// import 'element-plus/es/components/pagination/style/css';
 interface IData {
   date: string;
   name: string;

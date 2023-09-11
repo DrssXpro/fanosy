@@ -101,6 +101,9 @@ importers:
       '@fanosy/components':
         specifier: workspace:^
         version: link:../packages/components
+      '@fanosy/utils':
+        specifier: workspace:^
+        version: link:../packages/utils
       mockjs:
         specifier: ^1.1.0
         version: 1.1.0
